@@ -222,43 +222,94 @@ export async function ensureDbInitialized(): Promise<void> {
 }
 
 export async function getAllSiteData(includeHidden = false) {
-  await ensureDbInitialized();
+  try {
+    await ensureDbInitialized();
 
-  const catQuery = includeHidden
-    ? "SELECT * FROM categories ORDER BY sort_order ASC, id ASC"
-    : "SELECT * FROM categories WHERE is_visible = TRUE ORDER BY sort_order ASC, id ASC";
+    const catQuery = includeHidden
+      ? "SELECT * FROM categories ORDER BY sort_order ASC, id ASC"
+      : "SELECT * FROM categories WHERE is_visible = TRUE ORDER BY sort_order ASC, id ASC";
 
-  const itemQuery = includeHidden
-    ? "SELECT * FROM menu_items ORDER BY sort_order ASC, id ASC"
-    : "SELECT * FROM menu_items WHERE is_available = TRUE ORDER BY sort_order ASC, id ASC";
+    const itemQuery = includeHidden
+      ? "SELECT * FROM menu_items ORDER BY sort_order ASC, id ASC"
+      : "SELECT * FROM menu_items WHERE is_available = TRUE ORDER BY sort_order ASC, id ASC";
 
-  const galQuery = includeHidden
-    ? "SELECT * FROM gallery_photos ORDER BY sort_order ASC, id ASC"
-    : "SELECT * FROM gallery_photos WHERE is_visible = TRUE ORDER BY sort_order ASC, id ASC";
+    const galQuery = includeHidden
+      ? "SELECT * FROM gallery_photos ORDER BY sort_order ASC, id ASC"
+      : "SELECT * FROM gallery_photos WHERE is_visible = TRUE ORDER BY sort_order ASC, id ASC";
 
-  const revQuery = includeHidden
-    ? "SELECT * FROM reviews ORDER BY id DESC"
-    : "SELECT * FROM reviews WHERE is_visible = TRUE ORDER BY id DESC";
+    const revQuery = includeHidden
+      ? "SELECT * FROM reviews ORDER BY id DESC"
+      : "SELECT * FROM reviews WHERE is_visible = TRUE ORDER BY id DESC";
 
-  const [catsRes, itemsRes, galRes, revRes, setRes] = await Promise.all([
-    pool.query(catQuery),
-    pool.query(itemQuery),
-    pool.query(galQuery),
-    pool.query(revQuery),
-    pool.query("SELECT key, value FROM settings"),
-  ]);
+    const [catsRes, itemsRes, galRes, revRes, setRes] = await Promise.all([
+      pool.query(catQuery),
+      pool.query(itemQuery),
+      pool.query(galQuery),
+      pool.query(revQuery),
+      pool.query("SELECT key, value FROM settings"),
+    ]);
 
-  const settings: Record<string, string> = {};
-  for (const row of setRes.rows) {
-    settings[row.key] = row.value;
+    const settings: Record<string, string> = {};
+    for (const row of setRes.rows) {
+      settings[row.key] = row.value;
+    }
+
+    return {
+      categories: catsRes.rows,
+      menuItems: itemsRes.rows,
+      gallery: galRes.rows,
+      reviews: revRes.rows,
+      settings,
+      dbConnected: true,
+    };
+  } catch (error) {
+    console.warn("PostgreSQL connection failed, serving fallback seed data:", error);
+    // Graceful fallback for serverless / Vercel before DATABASE_URL is linked
+    return {
+      categories: INITIAL_CATEGORIES.map((c, idx) => ({
+        id: idx + 1,
+        slug: c.slug,
+        name: c.name,
+        subtitle: c.subtitle || "",
+        culinary_group: c.culinary_group,
+        banner_image: c.banner_image || "",
+        sort_order: c.sort_order,
+        is_visible: true,
+      })),
+      menuItems: INITIAL_MENU_ITEMS.map((m, idx) => ({
+        id: idx + 1,
+        category_slug: m.category_slug,
+        name: m.name,
+        quote_badge: m.quote_badge || "",
+        badge_color: m.badge_color || "",
+        description: m.description || "",
+        weight: m.weight || "",
+        price: m.price,
+        image_url: m.image_url || "",
+        is_spicy: Boolean(m.is_spicy),
+        is_popular: Boolean(m.is_popular),
+        is_available: true,
+        sort_order: m.sort_order,
+      })),
+      gallery: INITIAL_GALLERY.map((g, idx) => ({
+        id: idx + 1,
+        title: g.title,
+        category: g.category,
+        image_url: g.image_url,
+        sort_order: g.sort_order,
+      })),
+      reviews: INITIAL_REVIEWS.map((r, idx) => ({
+        id: idx + 1,
+        author_name: r.author_name,
+        author_avatar: r.author_avatar,
+        rating: r.rating,
+        relative_time: r.relative_time,
+        text: r.text,
+        source: r.source,
+      })),
+      settings: INITIAL_SETTINGS,
+      dbConnected: false,
+    };
   }
-
-  return {
-    categories: catsRes.rows,
-    menuItems: itemsRes.rows,
-    gallery: galRes.rows,
-    reviews: revRes.rows,
-    settings,
-  };
 }
 
