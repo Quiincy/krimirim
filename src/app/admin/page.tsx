@@ -64,6 +64,7 @@ export default function AdminPage() {
   const [reviews, setReviews] = useState<(Review & { is_visible?: boolean })[]>([]);
   const [reservations, setReservations] = useState<Reservation[]>([]);
   const [settings, setSettings] = useState<Record<string, string>>({});
+  const [dbConnected, setDbConnected] = useState<boolean>(true);
 
   // Toast feedback
   const [toast, setToast] = useState<string>("");
@@ -112,6 +113,7 @@ export default function AdminPage() {
       setReviews(data.reviews || []);
       setReservations(data.reservations || []);
       setSettings(data.settings || {});
+      setDbConnected(data.dbConnected !== false);
 
       if (data.isAdmin) {
         setIsAuthenticated(true);
@@ -481,9 +483,17 @@ export default function AdminPage() {
           </div>
 
           <div className="flex items-center gap-3">
-            <span className="hidden sm:inline text-xs text-stone-400">
-              PostgreSQL • Активно ({menuItems.length} позицій меню)
-            </span>
+            {dbConnected ? (
+              <span className="hidden sm:inline-flex items-center gap-1.5 text-xs text-emerald-400 bg-emerald-950/60 border border-emerald-800 px-2.5 py-1">
+                <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                PostgreSQL активна ({menuItems.length})
+              </span>
+            ) : (
+              <span className="hidden sm:inline-flex items-center gap-1.5 text-xs text-amber-300 bg-amber-950/60 border border-amber-800 px-2.5 py-1">
+                <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
+                Vercel (Без підключення до БД)
+              </span>
+            )}
             <button
               onClick={handleLogout}
               className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-zinc-900 hover:bg-red-900/60 border border-zinc-700 text-xs uppercase tracking-wider"
@@ -497,6 +507,24 @@ export default function AdminPage() {
 
       {/* Main Content Container */}
       <div className="max-w-7xl mx-auto px-4 py-6">
+        {!dbConnected && (
+          <div className="mb-6 p-4 bg-amber-50 border-l-4 border-amber-600 text-amber-900 text-xs sm:text-sm space-y-1.5">
+            <div className="font-bold text-sm flex items-center gap-1.5 text-amber-950">
+              <span>⚠️ База даних PostgreSQL не налаштована на Vercel</span>
+            </div>
+            <p className="text-zinc-700 leading-relaxed">
+              Адмін-панель завантажила повні початкові дані меню (243 страви, фото та відгуки). Оскільки Vercel є безсерверною платформою і не має вбудованої бази даних PostgreSQL, щоб ваші редагування та додавання нових страв зберігалися постійно:
+            </p>
+            <ol className="list-decimal pl-4 space-y-1 text-zinc-800 font-medium pt-1">
+              <li>Створіть безкоштовну базу даних на <a href="https://neon.tech" target="_blank" rel="noreferrer" className="underline text-amber-800 font-bold">Neon.tech</a> або <a href="https://supabase.com" target="_blank" rel="noreferrer" className="underline text-amber-800 font-bold">Supabase.com</a>.</li>
+              <li>Скопіюйте Connection String (напр. <code>postgres://user:pass@ep-xyz.neon.tech/neondb?sslmode=require</code>).</li>
+              <li>Вставте його у налаштуваннях проєкту на Vercel: <strong>Settings → Environment Variables → DATABASE_URL</strong>.</li>
+            </ol>
+            <p className="text-zinc-600 pt-1">
+              💡 <em>Якщо ви будете хостити на VPS через Docker — база даних PostgreSQL підніметься локально автоматично через <code>docker-compose.yml</code>.</em>
+            </p>
+          </div>
+        )}
         {/* Navigation Tabs */}
         <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-4 mb-6 border-b border-stone-300">
           {[

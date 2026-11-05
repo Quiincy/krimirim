@@ -9,12 +9,16 @@ export async function GET(req: NextRequest) {
     const isAdmin = await verifyAdminRequest(req);
     const data = await getAllSiteData(isAdmin);
 
-    let reservations = [];
-    if (isAdmin) {
-      const res = await pool.query(
-        "SELECT * FROM reservations ORDER BY created_at DESC LIMIT 100"
-      );
-      reservations = res.rows;
+    let reservations: unknown[] = [];
+    if (isAdmin && data.dbConnected) {
+      try {
+        const res = await pool.query(
+          "SELECT * FROM reservations ORDER BY created_at DESC LIMIT 100"
+        );
+        reservations = res.rows;
+      } catch {
+        reservations = [];
+      }
     }
 
     return NextResponse.json({
@@ -30,4 +34,3 @@ export async function GET(req: NextRequest) {
     );
   }
 }
-

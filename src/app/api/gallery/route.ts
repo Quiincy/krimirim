@@ -6,9 +6,9 @@ export async function POST(req: NextRequest) {
   if (!(await verifyAdminRequest(req))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  await ensureDbInitialized();
 
   try {
+    await ensureDbInitialized();
     const body = await req.json();
     const {
       title,
@@ -40,7 +40,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ photo: rows[0] });
   } catch (error) {
     console.error("Create gallery photo error:", error);
-    return NextResponse.json({ error: "Помилка додавання фото" }, { status: 500 });
+    return NextResponse.json(
+      {
+        error:
+          "База даних PostgreSQL не підключена. Додайте змінну DATABASE_URL у налаштуваннях Vercel.",
+      },
+      { status: 500 }
+    );
   }
 }
 
@@ -48,9 +54,9 @@ export async function PUT(req: NextRequest) {
   if (!(await verifyAdminRequest(req))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  await ensureDbInitialized();
 
   try {
+    await ensureDbInitialized();
     const body = await req.json();
     const {
       id,
@@ -82,7 +88,13 @@ export async function PUT(req: NextRequest) {
     return NextResponse.json({ photo: rows[0] });
   } catch (error) {
     console.error("Update gallery photo error:", error);
-    return NextResponse.json({ error: "Помилка оновлення фото" }, { status: 500 });
+    return NextResponse.json(
+      {
+        error:
+          "База даних PostgreSQL не підключена. Додайте змінну DATABASE_URL у налаштуваннях Vercel.",
+      },
+      { status: 500 }
+    );
   }
 }
 
@@ -90,16 +102,21 @@ export async function DELETE(req: NextRequest) {
   if (!(await verifyAdminRequest(req))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  await ensureDbInitialized();
 
   try {
+    await ensureDbInitialized();
     const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");
     await pool.query("DELETE FROM gallery_photos WHERE id = $1", [Number(id)]);
     return NextResponse.json({ ok: true });
   } catch (error) {
     console.error("Delete gallery photo error:", error);
-    return NextResponse.json({ error: "Помилка видалення фото" }, { status: 500 });
+    return NextResponse.json(
+      {
+        error:
+          "База даних PostgreSQL не підключена. Додайте змінну DATABASE_URL у налаштуваннях Vercel.",
+      },
+      { status: 500 }
+    );
   }
 }
-

@@ -6,9 +6,9 @@ export async function PUT(req: NextRequest) {
   if (!(await verifyAdminRequest(req))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  await ensureDbInitialized();
 
   try {
+    await ensureDbInitialized();
     const body = await req.json();
     const settingsObj = body.settings || body;
 
@@ -27,9 +27,11 @@ export async function PUT(req: NextRequest) {
   } catch (error) {
     console.error("Settings update error:", error);
     return NextResponse.json(
-      { error: "Помилка збереження налаштувань" },
+      {
+        error:
+          "База даних PostgreSQL не підключена. Додайте змінну DATABASE_URL у налаштуваннях Vercel.",
+      },
       { status: 500 }
     );
   }
 }
-

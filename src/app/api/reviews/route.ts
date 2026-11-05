@@ -6,9 +6,9 @@ export async function POST(req: NextRequest) {
   if (!(await verifyAdminRequest(req))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  await ensureDbInitialized();
 
   try {
+    await ensureDbInitialized();
     const body = await req.json();
     const {
       author_name,
@@ -57,7 +57,10 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error("Add review error:", error);
     return NextResponse.json(
-      { error: "Помилка додавання відгуку" },
+      {
+        error:
+          "База даних PostgreSQL не підключена. Додайте змінну DATABASE_URL у налаштуваннях Vercel.",
+      },
       { status: 500 }
     );
   }
@@ -67,9 +70,9 @@ export async function PUT(req: NextRequest) {
   if (!(await verifyAdminRequest(req))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  await ensureDbInitialized();
 
   try {
+    await ensureDbInitialized();
     const body = await req.json();
     const {
       id,
@@ -103,7 +106,10 @@ export async function PUT(req: NextRequest) {
   } catch (error) {
     console.error("Update review error:", error);
     return NextResponse.json(
-      { error: "Помилка оновлення відгуку" },
+      {
+        error:
+          "База даних PostgreSQL не підключена. Додайте змінну DATABASE_URL у налаштуваннях Vercel.",
+      },
       { status: 500 }
     );
   }
@@ -113,9 +119,9 @@ export async function DELETE(req: NextRequest) {
   if (!(await verifyAdminRequest(req))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  await ensureDbInitialized();
 
   try {
+    await ensureDbInitialized();
     const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");
     await pool.query("DELETE FROM reviews WHERE id = $1", [Number(id)]);
@@ -123,9 +129,11 @@ export async function DELETE(req: NextRequest) {
   } catch (error) {
     console.error("Delete review error:", error);
     return NextResponse.json(
-      { error: "Помилка видалення відгуку" },
+      {
+        error:
+          "База даних PostgreSQL не підключена. Додайте змінну DATABASE_URL у налаштуваннях Vercel.",
+      },
       { status: 500 }
     );
   }
 }
-

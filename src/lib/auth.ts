@@ -1,8 +1,7 @@
 import { NextRequest } from "next/server";
-import { pool, ensureDbInitialized } from "./db";
+import { pool } from "./db";
 
 export async function verifyAdminRequest(req: NextRequest): Promise<boolean> {
-  await ensureDbInitialized();
   const headerToken = req.headers.get("x-admin-password") || "";
   const cookieToken = req.cookies.get("krimirim_admin")?.value || "";
   const candidate = headerToken || cookieToken;
@@ -10,6 +9,7 @@ export async function verifyAdminRequest(req: NextRequest): Promise<boolean> {
   if (!candidate) return false;
 
   const envPassword = process.env.ADMIN_PASSWORD || "krymirome";
+  // Always check default/env password first without requiring database connection
   if (candidate === envPassword) return true;
 
   try {
@@ -20,9 +20,8 @@ export async function verifyAdminRequest(req: NextRequest): Promise<boolean> {
       return true;
     }
   } catch {
-    // ignore
+    // ignore DB connection error
   }
 
   return false;
 }
-

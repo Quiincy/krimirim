@@ -6,9 +6,9 @@ export async function POST(req: NextRequest) {
   if (!(await verifyAdminRequest(req))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  await ensureDbInitialized();
 
   try {
+    await ensureDbInitialized();
     const body = await req.json();
     const {
       slug,
@@ -47,7 +47,10 @@ export async function POST(req: NextRequest) {
   } catch (error) {
     console.error("Create category error:", error);
     return NextResponse.json(
-      { error: "Помилка створення категорії" },
+      {
+        error:
+          "База даних PostgreSQL не підключена. Додайте змінну DATABASE_URL у налаштуваннях Vercel.",
+      },
       { status: 500 }
     );
   }
@@ -57,9 +60,9 @@ export async function PUT(req: NextRequest) {
   if (!(await verifyAdminRequest(req))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  await ensureDbInitialized();
 
   try {
+    await ensureDbInitialized();
     const body = await req.json();
     const {
       id,
@@ -95,7 +98,10 @@ export async function PUT(req: NextRequest) {
   } catch (error) {
     console.error("Update category error:", error);
     return NextResponse.json(
-      { error: "Помилка оновлення категорії" },
+      {
+        error:
+          "База даних PostgreSQL не підключена. Додайте змінну DATABASE_URL у налаштуваннях Vercel.",
+      },
       { status: 500 }
     );
   }
@@ -105,9 +111,9 @@ export async function DELETE(req: NextRequest) {
   if (!(await verifyAdminRequest(req))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  await ensureDbInitialized();
 
   try {
+    await ensureDbInitialized();
     const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");
     await pool.query("DELETE FROM categories WHERE id = $1", [Number(id)]);
@@ -115,9 +121,11 @@ export async function DELETE(req: NextRequest) {
   } catch (error) {
     console.error("Delete category error:", error);
     return NextResponse.json(
-      { error: "Помилка видалення категорії" },
+      {
+        error:
+          "База даних PostgreSQL не підключена. Додайте змінну DATABASE_URL у налаштуваннях Vercel.",
+      },
       { status: 500 }
     );
   }
 }
-

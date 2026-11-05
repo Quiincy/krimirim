@@ -6,9 +6,9 @@ export async function POST(req: NextRequest) {
   if (!(await verifyAdminRequest(req))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  await ensureDbInitialized();
 
   try {
+    await ensureDbInitialized();
     const body = await req.json();
     const {
       category_slug,
@@ -57,7 +57,13 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ item: rows[0] });
   } catch (error) {
     console.error("Create menu item error:", error);
-    return NextResponse.json({ error: "Помилка збереження" }, { status: 500 });
+    return NextResponse.json(
+      {
+        error:
+          "База даних PostgreSQL не підключена на Vercel. Будь ласка, додайте змінну DATABASE_URL у налаштуваннях Vercel (наприклад, безкоштовний Neon чи Supabase) або розгорніть на VPS.",
+      },
+      { status: 500 }
+    );
   }
 }
 
@@ -65,9 +71,9 @@ export async function PUT(req: NextRequest) {
   if (!(await verifyAdminRequest(req))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  await ensureDbInitialized();
 
   try {
+    await ensureDbInitialized();
     const body = await req.json();
     const {
       id,
@@ -125,7 +131,13 @@ export async function PUT(req: NextRequest) {
     return NextResponse.json({ item: rows[0] });
   } catch (error) {
     console.error("Update menu item error:", error);
-    return NextResponse.json({ error: "Помилка оновлення" }, { status: 500 });
+    return NextResponse.json(
+      {
+        error:
+          "База даних PostgreSQL не підключена на Vercel. Додайте змінну DATABASE_URL у налаштуваннях середовища Vercel.",
+      },
+      { status: 500 }
+    );
   }
 }
 
@@ -133,9 +145,9 @@ export async function DELETE(req: NextRequest) {
   if (!(await verifyAdminRequest(req))) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
-  await ensureDbInitialized();
 
   try {
+    await ensureDbInitialized();
     const { searchParams } = new URL(req.url);
     const id = searchParams.get("id");
     if (!id) {
@@ -145,7 +157,12 @@ export async function DELETE(req: NextRequest) {
     return NextResponse.json({ ok: true });
   } catch (error) {
     console.error("Delete menu item error:", error);
-    return NextResponse.json({ error: "Помилка видалення" }, { status: 500 });
+    return NextResponse.json(
+      {
+        error:
+          "База даних PostgreSQL не підключена на Vercel. Додайте змінну DATABASE_URL у налаштуваннях середовища Vercel.",
+      },
+      { status: 500 }
+    );
   }
 }
-
