@@ -424,7 +424,7 @@ export default function AdminPage() {
                   value={adminPassword}
                   onChange={(e) => setAdminPassword(e.target.value)}
                   placeholder="Введіть пароль (за замовчуванням: krymirome)"
-                  className="w-full pl-10 pr-4 py-3 border border-stone-300 text-sm focus:outline-none focus:border-zinc-950"
+                  className="w-full pl-10 pr-4 py-3 border border-stone-300 text-base md:text-sm focus:outline-none focus:border-zinc-950"
                 />
               </div>
               <p className="text-[11px] text-zinc-400 mt-1.5">
@@ -1293,6 +1293,21 @@ export default function AdminPage() {
                     setSettings({ ...settings, wifi_password: e.target.value })
                   }
                   className="w-full px-3.5 py-2.5 border border-stone-300 text-sm font-mono"
+                />
+              </div>
+
+              <div>
+                <label className="block text-xs font-bold uppercase tracking-wider text-zinc-700 mb-1">
+                  Посилання на заклад у Google Maps
+                </label>
+                <input
+                  type="text"
+                  value={settings.google_maps_url || "https://maps.app.goo.gl/GR3u8QYa7ntYbPoa9"}
+                  onChange={(e) =>
+                    setSettings({ ...settings, google_maps_url: e.target.value })
+                  }
+                  placeholder="https://maps.app.goo.gl/..."
+                  className="w-full px-3.5 py-2.5 border border-stone-300 text-base md:text-sm"
                 />
               </div>
 

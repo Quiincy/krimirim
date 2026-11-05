@@ -201,10 +201,10 @@ export default function RestaurantClient({ initialData }: Props) {
 
   const googleMapsUrl =
     settings.google_maps_url ||
-    "https://www.google.com/maps/place/%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD+%D0%9A%D1%80%D0%B8%D0%BC+%D1%82%D0%B0+%D0%A0%D0%B8%D0%BC/@50.406378,30.656502,17z";
+    "https://maps.app.goo.gl/GR3u8QYa7ntYbPoa9";
 
   return (
-    <div className="min-h-screen bg-[#F7F5F0] text-zinc-900 flex flex-col pb-16 md:pb-0">
+    <div className="min-h-screen bg-[#F7F5F0] text-zinc-900 flex flex-col pb-16 md:pb-0 overflow-x-hidden w-full max-w-full">
       {/* ================= TOP PROMO & INFO STRIP ================= */}
       <div className="bg-zinc-950 text-stone-200 text-xs border-b border-zinc-800">
         <div className="max-w-7xl mx-auto px-4 py-2 flex flex-wrap items-center justify-between gap-2">
@@ -709,7 +709,7 @@ export default function RestaurantClient({ initialData }: Props) {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Пошук страви або інгредієнта..."
-                className="w-full pl-10 pr-8 py-2.5 bg-white border border-stone-300 text-sm focus:outline-none focus:border-zinc-900"
+                className="w-full pl-10 pr-8 py-2.5 bg-white border border-stone-300 text-base md:text-sm focus:outline-none focus:border-zinc-900"
               />
               {searchQuery && (
                 <button
@@ -1415,7 +1415,7 @@ export default function RestaurantClient({ initialData }: Props) {
             </div>
 
             {/* Right Interactive Google Map */}
-            <div className="lg:col-span-7 bg-stone-200 border border-stone-300 min-h-[380px] relative overflow-hidden">
+            <div className="lg:col-span-7 bg-stone-200 border border-stone-300 min-h-[380px] relative overflow-hidden group">
               <iframe
                 title="Карта Ресторан Крим та Рим"
                 src="https://www.google.com/maps?q=50.406378,30.656502&hl=uk&z=16&output=embed"
@@ -1423,6 +1423,17 @@ export default function RestaurantClient({ initialData }: Props) {
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
               />
+              <div className="absolute top-3 right-3 z-10">
+                <a
+                  href={googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 px-3.5 py-2 bg-zinc-950/90 hover:bg-zinc-950 text-white text-xs font-bold uppercase tracking-wider shadow-lg backdrop-blur-sm transition"
+                >
+                  <MapPin className="w-3.5 h-3.5 text-amber-400" />
+                  <span>Відкрити у Google Maps ↗</span>
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -1436,9 +1447,25 @@ export default function RestaurantClient({ initialData }: Props) {
               КРИМ &amp; РИМ
             </span>
             <span>•</span>
-            <span>вул. Братства Тарасівців, 3, Київ</span>
+            <a
+              href={googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition underline"
+            >
+              вул. Братства Тарасівців, 3, Київ ↗
+            </a>
           </div>
           <div className="flex items-center gap-6">
+            <a
+              href={googleMapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-white transition inline-flex items-center gap-1"
+            >
+              <MapPin className="w-3.5 h-3.5 text-amber-500" />
+              <span>Google Карти</span>
+            </a>
             <a href="/menu.pdf" target="_blank" className="hover:text-white transition">
               Оригінальне PDF-меню
             </a>
@@ -1515,11 +1542,11 @@ export default function RestaurantClient({ initialData }: Props) {
       {/* ================= TABLE RESERVATION MODAL ================= */}
       {bookingModalOpen && (
         <div
-          className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4"
+          className="fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-3 sm:p-4 overflow-y-auto overscroll-contain"
           onClick={() => setBookingModalOpen(false)}
         >
           <div
-            className="bg-white border-2 border-zinc-950 max-w-lg w-full p-6 sm:p-8 relative shadow-2xl"
+            className="bg-white border-2 border-zinc-950 max-w-lg w-full p-5 sm:p-8 relative shadow-2xl my-auto max-h-[92dvh] overflow-y-auto overscroll-contain"
             onClick={(e) => e.stopPropagation()}
           >
             <button
@@ -1586,7 +1613,7 @@ export default function RestaurantClient({ initialData }: Props) {
                         setBookingForm({ ...bookingForm, customer_name: e.target.value })
                       }
                       placeholder="Олександр"
-                      className="w-full px-3.5 py-2.5 border border-stone-300 text-sm focus:outline-none focus:border-zinc-950"
+                      className="w-full px-3.5 py-2.5 border border-stone-300 text-base md:text-sm focus:outline-none focus:border-zinc-950"
                     />
                   </div>
                   <div>
@@ -1601,7 +1628,7 @@ export default function RestaurantClient({ initialData }: Props) {
                         setBookingForm({ ...bookingForm, customer_phone: e.target.value })
                       }
                       placeholder="+380 (93) 000-00-00"
-                      className="w-full px-3.5 py-2.5 border border-stone-300 text-sm focus:outline-none focus:border-zinc-950"
+                      className="w-full px-3.5 py-2.5 border border-stone-300 text-base md:text-sm focus:outline-none focus:border-zinc-950"
                     />
                   </div>
                 </div>
@@ -1621,7 +1648,7 @@ export default function RestaurantClient({ initialData }: Props) {
                           reservation_date: e.target.value,
                         })
                       }
-                      className="w-full px-3 py-2.5 border border-stone-300 text-sm focus:outline-none focus:border-zinc-950"
+                      className="w-full px-3 py-2.5 border border-stone-300 text-base md:text-sm focus:outline-none focus:border-zinc-950"
                     />
                   </div>
                   <div>
@@ -1638,7 +1665,7 @@ export default function RestaurantClient({ initialData }: Props) {
                           reservation_time: e.target.value,
                         })
                       }
-                      className="w-full px-3 py-2.5 border border-stone-300 text-sm focus:outline-none focus:border-zinc-950"
+                      className="w-full px-3 py-2.5 border border-stone-300 text-base md:text-sm focus:outline-none focus:border-zinc-950"
                     />
                   </div>
                   <div>
@@ -1653,7 +1680,7 @@ export default function RestaurantClient({ initialData }: Props) {
                           guests_count: Number(e.target.value),
                         })
                       }
-                      className="w-full px-3 py-2.5 border border-stone-300 text-sm bg-white focus:outline-none focus:border-zinc-950"
+                      className="w-full px-3 py-2.5 border border-stone-300 text-base md:text-sm bg-white focus:outline-none focus:border-zinc-950"
                     >
                       {[1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 15].map((n) => (
                         <option key={n} value={n}>
@@ -1703,7 +1730,7 @@ export default function RestaurantClient({ initialData }: Props) {
                       setBookingForm({ ...bookingForm, comment: e.target.value })
                     }
                     placeholder="Наприклад: столик біля вікна, прийдемо з коргі 🐾"
-                    className="w-full px-3.5 py-2 border border-stone-300 text-sm focus:outline-none focus:border-zinc-950"
+                    className="w-full px-3.5 py-2 border border-stone-300 text-base md:text-sm focus:outline-none focus:border-zinc-950"
                   />
                 </div>
 

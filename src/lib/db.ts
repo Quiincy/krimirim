@@ -215,6 +215,14 @@ export async function ensureDbInitialized(): Promise<void> {
             [k, v]
           );
         }
+      } else {
+        // Keep google_maps_url synced with the updated link
+        if (INITIAL_SETTINGS.google_maps_url) {
+          await client.query(
+            `INSERT INTO settings (key, value) VALUES ('google_maps_url', $1) ON CONFLICT (key) DO UPDATE SET value = $1`,
+            [INITIAL_SETTINGS.google_maps_url]
+          );
+        }
       }
 
       await client.query("COMMIT");

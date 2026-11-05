@@ -1358,8 +1358,7 @@ export const INITIAL_SETTINGS: Record<string, string> = {
   instagram_main: "kyrym_i_rym",
   instagram_2: "amigosbarkyiv",
   instagram_3: "barstoyanka",
-  google_maps_url:
-    "https://www.google.com/maps/place/%D0%A0%D0%B5%D1%81%D1%82%D0%BE%D1%80%D0%B0%D0%BD+%D0%9A%D1%80%D0%B8%D0%BC+%D1%82%D0%B0+%D0%A0%D0%B8%D0%BC/@50.4063212,30.6500173,16z/data=!4m10!1m2!2m1!1z0KDQtdGB0YLQvtGA0LDQvdC4!3m6!1s0x40d4c5ebf4a2b7d9:0xbb7e7764e975a89f!8m2!3d50.406378!4d30.656502",
+  google_maps_url: "https://maps.app.goo.gl/GR3u8QYa7ntYbPoa9",
   google_place_id: "0x40d4c5ebf4a2b7d9:0xbb7e7764e975a89f",
   google_rating: "4.8",
   google_reviews_count: "288",
