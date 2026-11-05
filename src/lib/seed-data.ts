@@ -27,7 +27,7 @@ export const INITIAL_CATEGORIES: CategorySeed[] = [
     name: "Салати Рим",
     subtitle: "Італійська класика та свіжа зелень",
     culinary_group: "rome",
-    banner_image: "/images/banner_salad.jpg",
+    banner_image: "/images/banners/cat_salads_rome.jpg",
     sort_order: 1,
   },
   {
@@ -35,7 +35,7 @@ export const INITIAL_CATEGORIES: CategorySeed[] = [
     name: "Салати Крим",
     subtitle: "Пряні південні акценти та вогонь",
     culinary_group: "crimea",
-    banner_image: "/images/dish_salad_oven.jpg",
+    banner_image: "/images/banners/cat_salads_crimea.jpg",
     sort_order: 2,
   },
   {
@@ -43,7 +43,7 @@ export const INITIAL_CATEGORIES: CategorySeed[] = [
     name: "Супи Крим",
     subtitle: "Наваристі традиційні перші страви",
     culinary_group: "crimea",
-    banner_image: "/images/soup_lagman.jpg",
+    banner_image: "/images/banners/cat_soups_crimea.jpg",
     sort_order: 3,
   },
   {
@@ -51,6 +51,7 @@ export const INITIAL_CATEGORIES: CategorySeed[] = [
     name: "Супи Рим",
     subtitle: "Середземноморські та авторські супи",
     culinary_group: "rome",
+    banner_image: "/images/banners/cat_soups_rome.jpg",
     sort_order: 4,
   },
   {
@@ -58,7 +59,7 @@ export const INITIAL_CATEGORIES: CategorySeed[] = [
     name: "Закуски Крим",
     subtitle: "Чебуреки, янтики, мезе та домашні соління",
     culinary_group: "crimea",
-    banner_image: "/images/appetizer_pickles.jpg",
+    banner_image: "/images/banners/cat_appetizers_crimea.jpg",
     sort_order: 5,
   },
   {
@@ -66,7 +67,7 @@ export const INITIAL_CATEGORIES: CategorySeed[] = [
     name: "Закуски Рим",
     subtitle: "Тартари, карпачо, антипасті та брускети",
     culinary_group: "rome",
-    banner_image: "/images/banner_appetizers.jpg",
+    banner_image: "/images/banners/cat_appetizers_rome.jpg",
     sort_order: 6,
   },
   {
@@ -74,6 +75,7 @@ export const INITIAL_CATEGORIES: CategorySeed[] = [
     name: "Основні страви",
     subtitle: "Вишукані страви європейської та авторської кухні",
     culinary_group: "rome",
+    banner_image: "/images/banners/cat_mains.jpg",
     sort_order: 7,
   },
   {
@@ -81,7 +83,7 @@ export const INITIAL_CATEGORIES: CategorySeed[] = [
     name: "Піца",
     subtitle: "Справжня італійська піца з дров'яної печі",
     culinary_group: "rome",
-    banner_image: "/images/banner_pizza.jpg",
+    banner_image: "/images/banners/cat_pizza.jpg",
     sort_order: 8,
   },
   {
@@ -89,7 +91,7 @@ export const INITIAL_CATEGORIES: CategorySeed[] = [
     name: "Страви на вугіллі",
     subtitle: "Люля-кебаб, шашлик, стейки та хоспер-меню",
     culinary_group: "grill",
-    banner_image: "/images/banner_grill.jpg",
+    banner_image: "/images/banners/cat_grill.jpg",
     sort_order: 9,
   },
   {
@@ -97,7 +99,7 @@ export const INITIAL_CATEGORIES: CategorySeed[] = [
     name: "Паста",
     subtitle: "Домашня паста ручної роботи, равіолі та лазанья",
     culinary_group: "rome",
-    banner_image: "/images/cover_pasta.jpg",
+    banner_image: "/images/banners/cat_pasta.jpg",
     sort_order: 10,
   },
   {
@@ -105,7 +107,7 @@ export const INITIAL_CATEGORIES: CategorySeed[] = [
     name: "Гарніри",
     subtitle: "Ідеальне доповнення до основних страв",
     culinary_group: "rome",
-    banner_image: "/images/banner_veggies.jpg",
+    banner_image: "/images/banners/cat_sides.jpg",
     sort_order: 11,
   },
   {
@@ -113,6 +115,7 @@ export const INITIAL_CATEGORIES: CategorySeed[] = [
     name: "Соуси",
     subtitle: "Авторські соуси (40 гр)",
     culinary_group: "rome",
+    banner_image: "/images/banners/cat_appetizers_rome.jpg",
     sort_order: 12,
   },
   {
@@ -120,6 +123,7 @@ export const INITIAL_CATEGORIES: CategorySeed[] = [
     name: "До пива",
     subtitle: "Махан, міні-салямі та крафтові закуски",
     culinary_group: "crimea",
+    banner_image: "/images/banners/cat_beer_snacks.jpg",
     sort_order: 13,
   },
   {
@@ -127,6 +131,7 @@ export const INITIAL_CATEGORIES: CategorySeed[] = [
     name: "Дитяче меню",
     subtitle: "Улюблені страви для маленьких гостей",
     culinary_group: "kids",
+    banner_image: "/images/banners/cat_kids.jpg",
     sort_order: 14,
   },
   {
@@ -134,7 +139,7 @@ export const INITIAL_CATEGORIES: CategorySeed[] = [
     name: "Cocktails • Short",
     subtitle: "Класичні та авторські міцні коктейлі",
     culinary_group: "bar",
-    banner_image: "/images/bar_cocktail_pink.jpg",
+    banner_image: "/images/banners/cat_cocktails_short.jpg",
     sort_order: 15,
   },
   {
@@ -142,6 +147,7 @@ export const INITIAL_CATEGORIES: CategorySeed[] = [
     name: "Cocktails • Long & Bubble",
     subtitle: "Освіжаючі лонг-дрінки та ігристі коктейлі",
     culinary_group: "bar",
+    banner_image: "/images/banners/cat_cocktails_long.jpg",
     sort_order: 16,
   },
   {
@@ -149,7 +155,7 @@ export const INITIAL_CATEGORIES: CategorySeed[] = [
     name: "Cocktails • Martini, Sour & Speed",
     subtitle: "Витончені сауери, мартіні та мікс-дрінки",
     culinary_group: "bar",
-    banner_image: "/images/bar_espresso_martini.jpg",
+    banner_image: "/images/banners/cat_cocktails_martini.jpg",
     sort_order: 17,
   },
   {
@@ -157,7 +163,7 @@ export const INITIAL_CATEGORIES: CategorySeed[] = [
     name: "Вино, Пиво та Сидр",
     subtitle: "Класичні та домашні вина, крафтове та розливне пиво",
     culinary_group: "bar",
-    banner_image: "/images/drinks_beer.jpg",
+    banner_image: "/images/banners/cat_wine_beer.jpg",
     sort_order: 18,
   },
   {
@@ -165,7 +171,7 @@ export const INITIAL_CATEGORIES: CategorySeed[] = [
     name: "Настоянки (50 ml)",
     subtitle: "Фірмові крафтові настоянки власного виробництва",
     culinary_group: "bar",
-    banner_image: "/images/drinks_tinctures.jpg",
+    banner_image: "/images/banners/cat_tinctures.jpg",
     sort_order: 19,
   },
   {
@@ -173,7 +179,7 @@ export const INITIAL_CATEGORIES: CategorySeed[] = [
     name: "Міцний алкоголь (50 ml)",
     subtitle: "Віскі, Текіла, Ром, Коньяк, Горілка, Джин, Граппа, Лікери",
     culinary_group: "bar",
-    banner_image: "/images/drinks_whiskey.jpg",
+    banner_image: "/images/banners/cat_spirits.jpg",
     sort_order: 20,
   },
   {
@@ -181,7 +187,7 @@ export const INITIAL_CATEGORIES: CategorySeed[] = [
     name: "Кава, Чай та Напої",
     subtitle: "Лимонади, безалкогольні коктейлі, кава та чай",
     culinary_group: "bar",
-    banner_image: "/images/drinks_lemonade.jpg",
+    banner_image: "/images/banners/cat_soft_coffee.jpg",
     sort_order: 21,
   },
 ];

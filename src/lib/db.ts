@@ -154,6 +154,16 @@ export async function ensureDbInitialized(): Promise<void> {
             ]
           );
         }
+      } else {
+        // Sync banner images for existing categories
+        for (const cat of INITIAL_CATEGORIES) {
+          if (cat.banner_image) {
+            await client.query(
+              "UPDATE categories SET banner_image = $1 WHERE slug = $2",
+              [cat.banner_image, cat.slug]
+            );
+          }
+        }
       }
 
       // Check gallery
