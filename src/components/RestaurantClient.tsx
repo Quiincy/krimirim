@@ -368,7 +368,7 @@ export default function RestaurantClient({ initialData }: Props) {
               <LogoDiamond size="md" />
             </div>
             <div className="hidden sm:block lg:hidden xl:block">
-              <div className="text-lg font-bold tracking-[0.2em] uppercase text-zinc-900 leading-none font-serif">
+              <div className="text-lg font-extrabold tracking-tight uppercase text-zinc-900 leading-none">
                 КРИМ & РИМ
               </div>
               <div className="text-[11px] text-zinc-500 tracking-widest uppercase mt-1">
@@ -764,10 +764,10 @@ export default function RestaurantClient({ initialData }: Props) {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
             <div>
-              <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-amber-800 font-semibold">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-amber-50 border border-amber-200/80 text-xs font-semibold text-amber-900 tracking-wide mb-2">
                 <span>Повне актуальне меню закладу</span>
               </div>
-              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold tracking-wide uppercase text-zinc-950 mt-1">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-950">
                 Меню «Крим &amp; Рим»
               </h2>
             </div>
@@ -962,13 +962,13 @@ export default function RestaurantClient({ initialData }: Props) {
                     <div className="w-full sm:max-w-7xl sm:mx-auto sm:px-6 mb-6">
                       <div className="relative overflow-hidden w-full sm:rounded-3xl bg-gradient-to-r from-teal-700 via-cyan-700 to-sky-700 text-white p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
                         <div className="space-y-1 text-center sm:text-left">
-                          <span className="text-xs uppercase tracking-[0.25em] text-teal-200 font-bold block">
+                          <span className="text-xs uppercase tracking-wider text-teal-200 font-bold block">
                             Для наших маленьких гостей
                           </span>
-                          <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold tracking-wide uppercase">
+                          <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight">
                             {category.name}
                           </h3>
-                          <p className="text-xs sm:text-sm text-teal-100 italic">
+                          <p className="text-xs sm:text-sm text-teal-100 font-medium">
                             Корисні, смачні та улюблені дитячі страви з ніжних інгредієнтів
                           </p>
                         </div>
@@ -1033,7 +1033,7 @@ export default function RestaurantClient({ initialData }: Props) {
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
                         <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 text-white">
-                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-amber-300 font-semibold border border-white/10 mb-2">
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md text-[10px] sm:text-[11px] uppercase tracking-wider text-amber-300 font-semibold border border-white/10 mb-2">
                             {category.culinary_group === "crimea"
                               ? "🌙 Кримська традиція"
                               : category.culinary_group === "grill"
@@ -1042,11 +1042,11 @@ export default function RestaurantClient({ initialData }: Props) {
                               ? "🍸 Барна карта"
                               : "🏛️ Італійська традиція"}
                           </span>
-                          <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold tracking-wide uppercase text-white drop-shadow">
+                          <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-white drop-shadow-md">
                             {category.name}
                           </h3>
                           {category.subtitle && (
-                            <p className="text-xs sm:text-sm text-stone-200 font-serif italic mt-0.5 drop-shadow">
+                            <p className="text-xs sm:text-sm text-zinc-200 font-medium mt-1 drop-shadow">
                               {category.subtitle}
                             </p>
                           )}
@@ -1056,7 +1056,7 @@ export default function RestaurantClient({ initialData }: Props) {
                   ) : (
                     <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-4 mb-6 border-b border-zinc-200">
                       <div>
-                        <span className="text-xs uppercase tracking-[0.25em] text-amber-700 font-semibold block mb-1">
+                        <span className="text-xs uppercase tracking-wider text-amber-700 font-semibold block mb-1">
                           {category.culinary_group === "crimea"
                             ? "🌙 Кримська традиція"
                             : category.culinary_group === "grill"
@@ -1065,11 +1065,11 @@ export default function RestaurantClient({ initialData }: Props) {
                             ? "🍸 Барна карта"
                             : "🏛️ Італійська традиція"}
                         </span>
-                        <h3 className="text-2xl sm:text-3xl font-serif font-bold tracking-wide uppercase text-zinc-950">
+                        <h3 className="text-2xl sm:text-3xl font-extrabold tracking-tight text-zinc-950">
                           {category.name}
                         </h3>
                         {category.subtitle && (
-                          <p className="text-xs sm:text-sm text-zinc-500 font-serif italic mt-0.5">
+                          <p className="text-xs sm:text-sm text-zinc-500 font-medium mt-0.5">
                             {category.subtitle}
                           </p>
                         )}
@@ -1424,7 +1424,7 @@ export default function RestaurantClient({ initialData }: Props) {
                 <div className="flex items-center gap-4">
                   <LogoDiamond size="sm" />
                   <div>
-                    <h2 className="text-2xl font-bold uppercase tracking-wider text-zinc-950 font-serif">
+                    <h2 className="text-2xl font-extrabold tracking-tight text-zinc-950">
                       Чекаємо в гості
                     </h2>
                     <p className="text-xs text-zinc-500 uppercase tracking-widest">
@@ -1556,7 +1556,7 @@ export default function RestaurantClient({ initialData }: Props) {
               <div className="flex items-center gap-3">
                 <LogoDiamond size="sm" />
                 <div>
-                  <span className="text-base font-extrabold uppercase tracking-[0.25em] text-white block font-serif">
+                  <span className="text-base font-extrabold uppercase tracking-tight text-white block">
                     КРИМ &amp; РИМ
                   </span>
                   <span className="text-[11px] text-zinc-400 uppercase tracking-widest">
@@ -1830,7 +1830,7 @@ export default function RestaurantClient({ initialData }: Props) {
               className="w-full max-h-[75vh] object-contain bg-black"
             />
             <div className="p-4 text-white">
-              <h4 className="text-base font-bold uppercase tracking-wider font-serif">
+              <h4 className="text-base font-bold">
                 {lightboxImage.title}
               </h4>
               {lightboxImage.subtitle && (
@@ -1863,7 +1863,7 @@ export default function RestaurantClient({ initialData }: Props) {
             <div className="flex items-center gap-3 mb-6">
               <LogoDiamond size="sm" />
               <div>
-                <h3 className="text-xl font-bold uppercase tracking-wider text-zinc-950 font-serif">
+                <h3 className="text-xl font-extrabold tracking-tight text-zinc-950">
                   Бронювання столика
                 </h3>
                 <p className="text-xs text-zinc-500">
@@ -1877,7 +1877,7 @@ export default function RestaurantClient({ initialData }: Props) {
                 <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto">
                   <Check className="w-7 h-7" />
                 </div>
-                <h4 className="text-lg font-bold uppercase tracking-wider font-serif">
+                <h4 className="text-lg font-extrabold tracking-tight text-zinc-950">
                   Заявку прийнято!
                 </h4>
                 <p className="text-sm text-zinc-600">

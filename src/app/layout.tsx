@@ -6,6 +6,7 @@ const manrope = Manrope({
   subsets: ["cyrillic", "latin"],
   variable: "--font-sans",
   weight: ["400", "500", "600", "700", "800"],
+  display: "swap",
 });
 
 const playfair = Playfair_Display({
@@ -13,6 +14,7 @@ const playfair = Playfair_Display({
   variable: "--font-serif",
   weight: ["400", "500", "600", "700", "800", "900"],
   style: ["normal", "italic"],
+  display: "swap",
 });
 
 export const viewport: Viewport = {
