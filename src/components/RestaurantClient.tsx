@@ -758,21 +758,21 @@ export default function RestaurantClient({ initialData }: Props) {
         </div>
       </section>
 
-      {/* ================= FULL INTERACTIVE PDF-STYLE MENU SECTION ================= */}
-      <section id="menu" className="py-12 md:py-16 max-w-7xl mx-auto px-4 w-full">
+      {/* ================= FULL INTERACTIVE MENU SECTION ================= */}
+      <section id="menu" className="py-10 md:py-16 max-w-7xl mx-auto px-3 sm:px-6 w-full">
         {/* Section Title */}
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
           <div>
-            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-zinc-500 font-semibold">
+            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-amber-800 font-semibold">
               <span>Повне актуальне меню закладу</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold uppercase tracking-[0.15em] text-zinc-950 mt-1">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold tracking-wide uppercase text-zinc-950 mt-1">
               Меню «Крим &amp; Рим»
             </h2>
           </div>
 
           {/* Search & Quick Toggles */}
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2.5">
             <div className="relative flex-1 sm:w-72">
               <Search className="w-4 h-4 text-zinc-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
               <input
@@ -780,7 +780,7 @@ export default function RestaurantClient({ initialData }: Props) {
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="Пошук страви або інгредієнта..."
-                className="w-full pl-10 pr-8 py-2.5 bg-white border border-stone-300 text-base md:text-sm focus:outline-none focus:border-zinc-900"
+                className="w-full pl-10 pr-8 py-2.5 bg-white border border-zinc-200 text-base md:text-sm rounded-lg focus:outline-none focus:border-zinc-900 shadow-xs"
               />
               {searchQuery && (
                 <button
@@ -794,10 +794,10 @@ export default function RestaurantClient({ initialData }: Props) {
 
             <button
               onClick={() => setOnlyPopular(!onlyPopular)}
-              className={`px-3.5 py-2.5 text-xs font-bold uppercase tracking-wider border transition inline-flex items-center gap-1.5 ${
+              className={`px-3.5 py-2.5 text-xs font-bold uppercase tracking-wider border rounded-lg transition inline-flex items-center gap-1.5 ${
                 onlyPopular
-                  ? "bg-amber-600 text-white border-amber-600"
-                  : "bg-white text-zinc-700 border-stone-300 hover:border-zinc-900"
+                  ? "bg-amber-600 text-white border-amber-600 shadow-xs"
+                  : "bg-white text-zinc-700 border-zinc-200 hover:border-zinc-900 shadow-xs"
               }`}
             >
               <Sparkles className="w-3.5 h-3.5" />
@@ -806,10 +806,10 @@ export default function RestaurantClient({ initialData }: Props) {
 
             <button
               onClick={() => setOnlyWithPhoto(!onlyWithPhoto)}
-              className={`px-3.5 py-2.5 text-xs font-bold uppercase tracking-wider border transition inline-flex items-center gap-1.5 ${
+              className={`px-3.5 py-2.5 text-xs font-bold uppercase tracking-wider border rounded-lg transition inline-flex items-center gap-1.5 ${
                 onlyWithPhoto
-                  ? "bg-zinc-900 text-white border-zinc-900"
-                  : "bg-white text-zinc-700 border-stone-300 hover:border-zinc-900"
+                  ? "bg-zinc-950 text-white border-zinc-950 shadow-xs"
+                  : "bg-white text-zinc-700 border-zinc-200 hover:border-zinc-900 shadow-xs"
               }`}
             >
               <Eye className="w-3.5 h-3.5" />
@@ -819,7 +819,7 @@ export default function RestaurantClient({ initialData }: Props) {
         </div>
 
         {/* Macro Culinary Direction Filter Tabs */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mb-4">
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mb-6">
           {[
             { id: "all", label: "Усе меню", count: menuItems.length },
             {
@@ -866,10 +866,10 @@ export default function RestaurantClient({ initialData }: Props) {
                 setActiveGroup(tab.id);
                 setActiveCategorySlug("all");
               }}
-              className={`px-3 py-3 text-xs font-bold uppercase tracking-wider border text-center transition flex items-center justify-center gap-1.5 ${
+              className={`px-3 py-2.5 text-xs font-bold uppercase tracking-wider rounded-lg border text-center transition flex items-center justify-center gap-1.5 ${
                 activeGroup === tab.id
                   ? "bg-zinc-950 text-white border-zinc-950 shadow-sm"
-                  : "bg-white text-zinc-700 border-zinc-200 hover:bg-zinc-50"
+                  : "bg-white text-zinc-700 border-zinc-200 hover:bg-zinc-50 shadow-xs"
               }`}
             >
               <span>{tab.label}</span>
@@ -886,21 +886,16 @@ export default function RestaurantClient({ initialData }: Props) {
           ))}
         </div>
 
-        {/* Sticky Category Ribbon Selector */}
-        <div className="sticky top-20 z-30 bg-white/95 backdrop-blur-md py-3 border-y border-zinc-200 shadow-sm mb-8 -mx-4 px-4">
+        {/* Sticky Category Navigation Bar */}
+        <div className="sticky top-20 z-30 bg-[#FAFAFA]/95 backdrop-blur-md py-3 border-y border-zinc-200/80 mb-10 -mx-3 sm:mx-0 px-3 sm:px-0">
           <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
             <button
               onClick={() => setActiveCategorySlug("all")}
-              className={`px-4 py-2 text-xs font-bold uppercase tracking-[0.15em] whitespace-nowrap transition ${
+              className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider whitespace-nowrap transition ${
                 activeCategorySlug === "all"
                   ? "bg-zinc-950 text-white shadow-sm"
-                  : "bg-zinc-100 text-zinc-700 hover:bg-zinc-200 border border-zinc-200/60"
+                  : "bg-white text-zinc-700 hover:bg-zinc-100 border border-zinc-200/80 shadow-xs"
               }`}
-              style={{
-                clipPath:
-                  "polygon(0 0, 100% 0, calc(100% - 8px) 50%, 100% 100%, 0 100%)",
-                paddingRight: "1.25rem",
-              }}
             >
               Усі категорії ({visibleCategories.length})
             </button>
@@ -913,18 +908,13 @@ export default function RestaurantClient({ initialData }: Props) {
                     activeCategorySlug === cat.slug ? "all" : cat.slug
                   )
                 }
-                className={`px-4 py-2 text-xs font-bold uppercase tracking-[0.15em] whitespace-nowrap transition ${
+                className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider whitespace-nowrap transition ${
                   activeCategorySlug === cat.slug
                     ? "bg-amber-700 text-white shadow-sm"
                     : cat.culinary_group === "kids"
-                    ? "bg-[#1997A9] text-white hover:opacity-90"
-                    : "bg-zinc-100 text-zinc-800 hover:bg-zinc-200 border border-zinc-200/60"
+                    ? "bg-[#1997A9] text-white hover:opacity-90 shadow-xs"
+                    : "bg-white text-zinc-700 hover:bg-zinc-100 border border-zinc-200/80 shadow-xs"
                 }`}
-                style={{
-                  clipPath:
-                    "polygon(0 0, 100% 0, calc(100% - 8px) 50%, 100% 100%, 0 100%)",
-                  paddingRight: "1.25rem",
-                }}
               >
                 {cat.name}
               </button>
@@ -932,9 +922,9 @@ export default function RestaurantClient({ initialData }: Props) {
           </div>
         </div>
 
-        {/* Menu Sheets Container */}
+        {/* Open Luxury Menu List (No Box Borders, Full Width on Mobile) */}
         {filteredCategoriesWithItems.length === 0 ? (
-          <div className="bg-white border border-stone-200 p-12 text-center space-y-4">
+          <div className="bg-white border border-zinc-200 p-12 text-center space-y-4 rounded-xl shadow-xs">
             <p className="text-lg text-zinc-600">
               За вашим запитом не знайдено страв.
             </p>
@@ -946,215 +936,213 @@ export default function RestaurantClient({ initialData }: Props) {
                 setActiveGroup("all");
                 setActiveCategorySlug("all");
               }}
-              className="px-5 py-2.5 bg-zinc-900 text-white text-xs font-bold uppercase tracking-widest"
+              className="px-5 py-2.5 bg-zinc-900 text-white text-xs font-bold uppercase tracking-widest rounded-lg"
             >
               Скинути фільтри
             </button>
           </div>
         ) : (
-          <div className="space-y-12">
+          <div className="space-y-16 sm:space-y-20">
             {filteredCategoriesWithItems.map(({ category, items }) => {
-              // Special rendering for Kids Menu (Page 9 of PDF)
+              // Special rendering for Kids Menu
               if (category.culinary_group === "kids" || category.slug === "kids") {
                 return (
                   <div
                     key={category.slug}
                     id={`cat-${category.slug}`}
-                    className="bg-white border border-stone-200 shadow-md overflow-hidden relative p-6 sm:p-10"
+                    className="scroll-mt-28"
                   >
-                    {/* Kids Menu Ribbon Header matching PDF Page 9 */}
-                    <div className="flex flex-col sm:flex-row items-center justify-between gap-4 mb-8">
-                      <div
-                        className="px-10 py-2.5 bg-[#1997A9] text-white text-lg sm:text-xl font-bold uppercase tracking-[0.3em] text-center"
-                        style={{
-                          clipPath:
-                            "polygon(0 0, 100% 0, 95% 50%, 100% 100%, 0 100%, 5% 50%)",
-                        }}
-                      >
-                        {category.name}
+                    {/* Kids Menu Banner */}
+                    <div className="relative overflow-hidden -mx-3 sm:mx-0 sm:rounded-2xl bg-gradient-to-r from-teal-700 via-cyan-700 to-sky-700 text-white p-6 sm:p-8 mb-6 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
+                      <div className="space-y-1 text-center sm:text-left">
+                        <span className="text-xs uppercase tracking-[0.25em] text-teal-200 font-bold block">
+                          Для наших маленьких гостей
+                        </span>
+                        <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold tracking-wide uppercase">
+                          {category.name}
+                        </h3>
+                        <p className="text-xs sm:text-sm text-teal-100 italic">
+                          Корисні, смачні та улюблені дитячі страви з ніжних інгредієнтів
+                        </p>
                       </div>
-                      <KidsMenuCatIllustration className="w-28 h-24 sm:w-36 sm:h-28 shrink-0" />
+                      <KidsMenuCatIllustration className="w-24 h-20 sm:w-32 sm:h-24 shrink-0" />
                     </div>
 
-                    {/* Kids Menu Colored Quote Bars matching PDF Page 9 */}
-                    <div className="space-y-4 max-w-4xl mx-auto">
-                      {items.map((item, idx) => {
-                        const barColor =
-                          item.badge_color === "yellow"
-                            ? "bg-[#F6D046] text-zinc-950"
-                            : item.badge_color === "coral"
-                            ? "bg-[#DD5746] text-white"
-                            : idx % 3 === 1
-                            ? "bg-[#F6D046] text-zinc-950"
-                            : idx % 3 === 2
-                            ? "bg-[#DD5746] text-white"
-                            : "bg-[#1997A9] text-white";
-
-                        return (
-                          <div key={item.id} className="group">
-                            <div
-                              className={`px-4 py-2 flex items-center justify-between gap-4 ${barColor}`}
-                            >
-                              <span className="text-base sm:text-lg font-medium tracking-wide">
+                    {/* Kids Menu Open List */}
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4">
+                      {items.map((item) => (
+                        <div
+                          key={item.id}
+                          className="flex items-start justify-between gap-4 p-4 rounded-xl bg-white border border-zinc-200/80 shadow-xs hover:border-cyan-400/70 hover:shadow-sm transition"
+                        >
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center gap-2">
+                              <span className="inline-block w-2 h-2 rounded-full bg-cyan-500 shrink-0" />
+                              <h4 className="text-sm sm:text-base font-bold text-zinc-950">
                                 {item.quote_badge || item.name}
-                              </span>
-                              <div className="flex items-baseline gap-2 sm:gap-4 shrink-0">
-                                {item.weight && (
-                                  <span className="text-xs sm:text-sm opacity-90 whitespace-nowrap">
-                                    {item.weight}
-                                  </span>
-                                )}
-                                <span className="text-base sm:text-xl font-bold whitespace-nowrap">
-                                  {item.price}&nbsp;₴
-                                </span>
-                              </div>
+                              </h4>
                             </div>
-                            <div className="pt-1.5 pb-2 px-4 bg-stone-50/70 border-x border-b border-stone-100">
-                              <div className="text-sm font-bold uppercase tracking-wider text-zinc-900">
-                                {item.name}
+                            {item.description && (
+                              <p className="text-xs sm:text-sm text-zinc-600 mt-1 pl-4">
+                                {item.description}
+                              </p>
+                            )}
+                          </div>
+                          <div className="text-right shrink-0">
+                            {item.weight && (
+                              <div className="text-xs text-zinc-400 font-mono">
+                                {item.weight}
                               </div>
-                              {item.description && (
-                                <div className="text-xs sm:text-sm text-zinc-600 mt-0.5">
-                                  {item.description}
-                                </div>
-                              )}
+                            )}
+                            <div className="text-base sm:text-lg font-bold text-zinc-950">
+                              {item.price}&nbsp;₴
                             </div>
                           </div>
-                        );
-                      })}
+                        </div>
+                      ))}
                     </div>
                   </div>
                 );
               }
 
-              // Standard Editorial PDF Page Sheet (Pages 3-8, 10-14)
+              // Standard Open Luxury Category
               return (
                 <div
                   key={category.slug}
                   id={`cat-${category.slug}`}
-                  className="bg-white border border-stone-200/90 shadow-sm overflow-hidden"
+                  className="scroll-mt-28"
                 >
-                  {/* Top Photographic Strip Banner (like top of each PDF page) */}
-                  {category.banner_image && (
-                    <div className="relative h-36 sm:h-48 w-full overflow-hidden border-b border-stone-200">
+                  {/* Category Banner: Full-width on mobile (-mx-3), rounded-2xl on tablet/desktop */}
+                  {category.banner_image ? (
+                    <div className="relative h-44 sm:h-56 md:h-64 w-full -mx-3 sm:mx-0 sm:rounded-2xl overflow-hidden mb-8 shadow-sm border border-zinc-200/60 group">
                       <img
                         src={category.banner_image}
                         alt={category.name}
-                        className="w-full h-full object-cover"
+                        className="w-full h-full object-cover group-hover:scale-105 transition duration-700"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/20 to-transparent" />
-                      <div className="absolute bottom-3 left-6 text-white">
-                        <span className="text-[11px] uppercase tracking-[0.25em] text-amber-300 font-semibold">
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
+                      <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 right-4 text-white">
+                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-black/40 backdrop-blur-md text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-amber-300 font-semibold border border-white/10 mb-1.5">
                           {category.culinary_group === "crimea"
-                            ? "Кримська традиція"
+                            ? "🌙 Кримська традиція"
                             : category.culinary_group === "grill"
-                            ? "Мангал & Хоспер"
+                            ? "🔥 Мангал & Хоспер"
                             : category.culinary_group === "bar"
-                            ? "Барна карта"
-                            : "Італійська традиція"}
+                            ? "🍸 Барна карта"
+                            : "🏛️ Італійська традиція"}
                         </span>
+                        <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold tracking-wide uppercase text-white drop-shadow">
+                          {category.name}
+                        </h3>
+                        {category.subtitle && (
+                          <p className="text-xs sm:text-sm text-stone-200 font-serif italic mt-0.5 drop-shadow">
+                            {category.subtitle}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  ) : (
+                    <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 pb-4 mb-6 border-b border-zinc-200">
+                      <div>
+                        <span className="text-xs uppercase tracking-[0.25em] text-amber-700 font-semibold block mb-1">
+                          {category.culinary_group === "crimea"
+                            ? "🌙 Кримська традиція"
+                            : category.culinary_group === "grill"
+                            ? "🔥 Мангал & Хоспер"
+                            : category.culinary_group === "bar"
+                            ? "🍸 Барна карта"
+                            : "🏛️ Італійська традиція"}
+                        </span>
+                        <h3 className="text-2xl sm:text-3xl font-serif font-bold tracking-wide uppercase text-zinc-950">
+                          {category.name}
+                        </h3>
+                        {category.subtitle && (
+                          <p className="text-xs sm:text-sm text-zinc-500 font-serif italic mt-0.5">
+                            {category.subtitle}
+                          </p>
+                        )}
                       </div>
                     </div>
                   )}
 
-                  <div className="p-6 sm:p-10">
-                    {/* PDF Grey Chevron Ribbon Category Header */}
-                    <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+                  {/* Two-Column Open Luxury Menu Layout (No Box Frames) */}
+                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-6">
+                    {items.map((item) => (
                       <div
-                        className="inline-block bg-zinc-950 text-white px-6 py-2.5 pr-10 text-base sm:text-lg font-extrabold uppercase tracking-[0.28em] shadow-sm"
-                        style={{
-                          clipPath:
-                            "polygon(0 0, 100% 0, calc(100% - 14px) 50%, 100% 100%, 0 100%)",
-                        }}
+                        key={item.id}
+                        className="flex items-start gap-3.5 group pb-4 border-b border-zinc-200/60 hover:border-zinc-300 transition"
                       >
-                        {category.name}
-                      </div>
-                      {category.subtitle && (
-                        <span className="text-xs sm:text-sm text-zinc-500 italic">
-                          {category.subtitle}
-                        </span>
-                      )}
-                    </div>
+                        {/* Dish Photo Thumbnail */}
+                        {item.image_url && (
+                          <button
+                            onClick={() =>
+                              setLightboxImage({
+                                url: item.image_url,
+                                title: item.name,
+                                subtitle: `${item.weight ? item.weight + " • " : ""}${item.price} ₴ — ${item.description}`,
+                              })
+                            }
+                            className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-lg overflow-hidden border border-zinc-200/80 bg-zinc-100 relative group/img shadow-xs"
+                            title="Натисніть, щоб збільшити фото страви"
+                          >
+                            <img
+                              src={item.image_url}
+                              alt={item.name}
+                              className="w-full h-full object-cover group-hover/img:scale-110 transition duration-500"
+                            />
+                            <span className="absolute inset-0 bg-black/0 group-hover/img:bg-black/25 transition flex items-center justify-center">
+                              <Eye className="w-4 h-4 text-white opacity-0 group-hover/img:opacity-100 transition" />
+                            </span>
+                          </button>
+                        )}
 
-                    {/* Two-Column PDF Layout with Center Vertical Divider */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6 relative">
-                      {items.map((item) => (
-                        <div
-                          key={item.id}
-                          className="flex items-start gap-3.5 group py-1"
-                        >
-                          {/* Optional Dish Photo Thumbnail */}
-                          {item.image_url && (
-                            <button
-                              onClick={() =>
-                                setLightboxImage({
-                                  url: item.image_url,
-                                  title: item.name,
-                                  subtitle: `${item.weight ? item.weight + " • " : ""}${item.price} ₴ — ${item.description}`,
-                                })
-                              }
-                              className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 overflow-hidden border border-stone-200 bg-stone-100 relative group/img"
-                              title="Натисніть, щоб збільшити фото страви"
-                            >
-                              <img
-                                src={item.image_url}
-                                alt={item.name}
-                                className="w-full h-full object-cover group-hover/img:scale-110 transition duration-500"
-                              />
-                              <span className="absolute inset-0 bg-black/0 group-hover/img:bg-black/20 transition flex items-center justify-center">
-                                <Eye className="w-4 h-4 text-white opacity-0 group-hover/img:opacity-100 transition" />
-                              </span>
-                            </button>
-                          )}
-
-                          {/* Dish Text & Dotted Price Leader */}
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-baseline justify-between gap-2">
-                              <div className="flex items-center gap-1.5 flex-wrap">
-                                {item.is_spicy && (
-                                  <span
-                                    title="Пікантна / гостра страва"
-                                    className="inline-flex items-center text-orange-600"
-                                  >
-                                    <Flame className="w-4 h-4 fill-orange-500 text-orange-600 shrink-0" />
-                                  </span>
-                                )}
-                                <h3 className="text-sm sm:text-[15px] font-bold uppercase tracking-wide text-zinc-950 leading-snug">
-                                  {item.name}
-                                </h3>
-                                {item.weight && (
-                                  <span className="text-xs font-normal text-zinc-500 whitespace-nowrap">
-                                    ({item.weight})
-                                  </span>
-                                )}
-                                {item.is_popular && (
-                                  <span className="px-1.5 py-0.5 bg-amber-100 text-amber-900 text-[10px] font-bold uppercase tracking-wider">
-                                    ХІТ
-                                  </span>
-                                )}
-                              </div>
-
-                              {/* Dotted Leader Line from PDF */}
-                              <div className="flex-1 border-b-2 border-dotted border-stone-300 mx-1 min-w-[20px] hidden sm:block" />
-
-                              {/* Price */}
-                              <div className="text-sm sm:text-base font-bold text-zinc-950 whitespace-nowrap shrink-0 text-right">
-                                {item.price}&nbsp;
-                                <span className="text-xs font-normal text-zinc-500">
-                                  ₴
+                        {/* Dish Text & Price */}
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-baseline justify-between gap-2">
+                            <div className="flex items-center gap-1.5 flex-wrap">
+                              {item.is_spicy && (
+                                <span
+                                  title="Пікантна / гостра страва"
+                                  className="inline-flex items-center text-rose-600"
+                                >
+                                  <Flame className="w-3.5 h-3.5 fill-rose-500 text-rose-600 shrink-0" />
                                 </span>
-                              </div>
+                              )}
+                              <h4 className="text-sm sm:text-base font-bold text-zinc-950 tracking-tight group-hover:text-amber-800 transition">
+                                {item.name}
+                              </h4>
+                              {item.weight && (
+                                <span className="text-xs font-normal text-zinc-400 whitespace-nowrap">
+                                  ({item.weight})
+                                </span>
+                              )}
+                              {item.is_popular && (
+                                <span className="px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-amber-500/15 text-amber-900 border border-amber-300/60">
+                                  ХІТ
+                                </span>
+                              )}
                             </div>
 
-                            {item.description && (
-                              <p className="text-xs sm:text-[13px] text-zinc-600 mt-1 leading-relaxed">
-                                {item.description}
-                              </p>
-                            )}
+                            {/* Dotted Leader Line */}
+                            <div className="flex-1 border-b border-dotted border-zinc-300 mx-2 min-w-[16px] hidden sm:block" />
+
+                            {/* Price */}
+                            <div className="text-base sm:text-lg font-bold text-zinc-950 whitespace-nowrap shrink-0 text-right">
+                              {item.price}&nbsp;
+                              <span className="text-xs font-normal text-zinc-500">
+                                ₴
+                              </span>
+                            </div>
                           </div>
+
+                          {item.description && (
+                            <p className="text-xs sm:text-[13px] text-zinc-600 mt-1 leading-relaxed">
+                              {item.description}
+                            </p>
+                          )}
                         </div>
-                      ))}
-                    </div>
+                      </div>
+                    ))}
                   </div>
                 </div>
               );
@@ -1162,22 +1150,22 @@ export default function RestaurantClient({ initialData }: Props) {
           </div>
         )}
 
-        {/* PDF Footer Allergy Notice & Wi-Fi Password */}
-        <div className="mt-10 p-6 bg-white border border-stone-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        {/* Allergy Notice & Wi-Fi Password */}
+        <div className="mt-12 pt-8 border-t border-zinc-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
           <p className="text-xs sm:text-sm text-zinc-600 italic">
             {settings.allergy_notice ||
               "* Якщо у вас є алергія на певні продукти — повідомте, будь ласка, офіціанта"}
           </p>
-          <div className="flex items-center gap-4">
-            <span className="text-xs font-mono uppercase tracking-widest bg-stone-100 px-3 py-1.5 border border-stone-200">
-              <strong>WI-FI PASSWORD:</strong> {settings.wifi_password || "krymirome"}
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="text-xs font-mono uppercase tracking-widest bg-white px-3 py-1.5 border border-zinc-200/80 rounded shadow-xs">
+              <strong>WI-FI:</strong> {settings.wifi_password || "krymirome"}
             </span>
             <a
               href="/menu.pdf"
               target="_blank"
               className="text-xs font-bold uppercase tracking-wider underline hover:text-amber-700 whitespace-nowrap"
             >
-              Завантажити PDF
+              Завантажити PDF-меню
             </a>
           </div>
         </div>
