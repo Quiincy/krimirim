@@ -695,7 +695,7 @@ export default function RestaurantClient({ initialData }: Props) {
                       setBookingSuccess(false);
                       setBookingModalOpen(true);
                     }}
-                    className="inline-flex items-center px-4 py-2 rounded-full bg-amber-700 hover:bg-amber-800 text-white text-xs font-bold uppercase tracking-wider transition shadow-xs"
+                    className="inline-flex items-center px-4 py-2 rounded-full bg-zinc-950 hover:bg-amber-700 text-white text-xs font-bold uppercase tracking-wider transition shadow-xs"
                   >
                     Забронювати у залі «Крим»
                   </button>
