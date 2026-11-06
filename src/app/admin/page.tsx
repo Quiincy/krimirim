@@ -394,7 +394,7 @@ export default function AdminPage() {
   // Login Screen
   if (!isAuthenticated && !loading) {
     return (
-      <div className="min-h-screen bg-[#F7F5F0] flex items-center justify-center p-4">
+      <div className="min-h-screen bg-[#FAFAFA] flex items-center justify-center p-4">
         <div className="bg-white border-2 border-zinc-950 max-w-md w-full p-8 shadow-2xl">
           <div className="flex flex-col items-center text-center mb-6">
             <LogoDiamond size="md" />

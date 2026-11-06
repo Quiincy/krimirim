@@ -17,9 +17,9 @@ export default {
           teal: "#1997A9",
         },
         rome: {
-          marble: "#F8F6F1",
-          stone: "#EAE5DC",
-          ribbon: "#E2E4E6",
+          marble: "#FAFAFA",
+          stone: "#F4F4F5",
+          ribbon: "#E4E4E7",
           charcoal: "#18181B",
           olive: "#4A5D4E",
         },

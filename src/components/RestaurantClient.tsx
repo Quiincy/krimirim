@@ -216,7 +216,7 @@ export default function RestaurantClient({ initialData }: Props) {
     "https://maps.app.goo.gl/GR3u8QYa7ntYbPoa9";
 
   return (
-    <div className="min-h-screen bg-[#F7F5F0] text-zinc-900 flex flex-col pb-16 md:pb-0 overflow-x-hidden w-full max-w-full">
+    <div className="min-h-screen bg-[#FAFAFA] text-zinc-900 flex flex-col pb-16 md:pb-0 overflow-x-hidden w-full max-w-full">
       {/* ================= TOP PROMO & INFO STRIP ================= */}
       <div className="bg-zinc-950 text-stone-200 text-xs border-b border-zinc-800 overflow-hidden select-none">
         {/* Mobile: Infinite Loop Ticker in One Line */}
@@ -508,7 +508,7 @@ export default function RestaurantClient({ initialData }: Props) {
 
               {/* Key Highlights Badges */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-                <div className="p-3.5 bg-[#F8F6F1] border border-stone-200">
+                <div className="p-3.5 bg-white border border-zinc-200 shadow-sm">
                   <div className="text-xs uppercase tracking-widest text-zinc-500">
                     Дров&apos;яна піч
                   </div>
@@ -516,7 +516,7 @@ export default function RestaurantClient({ initialData }: Props) {
                     14 видів піци
                   </div>
                 </div>
-                <div className="p-3.5 bg-[#F8F6F1] border border-stone-200">
+                <div className="p-3.5 bg-white border border-zinc-200 shadow-sm">
                   <div className="text-xs uppercase tracking-widest text-zinc-500">
                     Живий вогонь
                   </div>
@@ -524,7 +524,7 @@ export default function RestaurantClient({ initialData }: Props) {
                     Мангал &amp; Хоспер
                   </div>
                 </div>
-                <div className="p-3.5 bg-[#F8F6F1] border border-stone-200">
+                <div className="p-3.5 bg-white border border-zinc-200 shadow-sm">
                   <div className="text-xs uppercase tracking-widest text-zinc-500">
                     Будні 11–15
                   </div>
@@ -532,7 +532,7 @@ export default function RestaurantClient({ initialData }: Props) {
                     Знижка -20%
                   </div>
                 </div>
-                <div className="p-3.5 bg-[#F8F6F1] border border-stone-200">
+                <div className="p-3.5 bg-white border border-zinc-200 shadow-sm">
                   <div className="text-xs uppercase tracking-widest text-zinc-500">
                     Google Карти
                   </div>
@@ -639,7 +639,7 @@ export default function RestaurantClient({ initialData }: Props) {
       </section>
 
       {/* ================= DUAL CONCEPT SHOWCASE: КРИМ & РИМ ================= */}
-      <section id="concept" className="py-12 md:py-16 bg-[#F2EFE9] border-b border-stone-200">
+      <section id="concept" className="py-12 md:py-16 bg-zinc-50 border-b border-zinc-200">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center max-w-2xl mx-auto mb-10">
             <span className="text-xs uppercase tracking-[0.25em] text-amber-800 font-bold">
@@ -652,7 +652,7 @@ export default function RestaurantClient({ initialData }: Props) {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {/* CRIMEA CARD */}
-            <div className="group bg-white border border-stone-200 overflow-hidden shadow-sm hover:shadow-xl transition flex flex-col">
+            <div className="group bg-white border border-zinc-200 overflow-hidden shadow-sm hover:shadow-xl transition flex flex-col">
               <div className="relative h-64 sm:h-72 overflow-hidden">
                 <img
                   src="/images/interior_crimea_sofas.jpg"
@@ -704,7 +704,7 @@ export default function RestaurantClient({ initialData }: Props) {
             </div>
 
             {/* ROME CARD */}
-            <div className="group bg-white border border-stone-200 overflow-hidden shadow-sm hover:shadow-xl transition flex flex-col">
+            <div className="group bg-white border border-zinc-200 overflow-hidden shadow-sm hover:shadow-xl transition flex flex-col">
               <div className="relative h-64 sm:h-72 overflow-hidden">
                 <img
                   src="/images/interior_rome_arches.jpg"
@@ -869,7 +869,7 @@ export default function RestaurantClient({ initialData }: Props) {
               className={`px-3 py-3 text-xs font-bold uppercase tracking-wider border text-center transition flex items-center justify-center gap-1.5 ${
                 activeGroup === tab.id
                   ? "bg-zinc-950 text-white border-zinc-950 shadow-sm"
-                  : "bg-white text-zinc-700 border-stone-300 hover:bg-stone-100"
+                  : "bg-white text-zinc-700 border-zinc-200 hover:bg-zinc-50"
               }`}
             >
               <span>{tab.label}</span>
@@ -877,7 +877,7 @@ export default function RestaurantClient({ initialData }: Props) {
                 className={`text-[10px] px-1.5 py-0.5 rounded-full ${
                   activeGroup === tab.id
                     ? "bg-white/20 text-white"
-                    : "bg-stone-100 text-zinc-500"
+                    : "bg-zinc-100 text-zinc-500"
                 }`}
               >
                 {tab.count}
@@ -887,14 +887,14 @@ export default function RestaurantClient({ initialData }: Props) {
         </div>
 
         {/* Sticky Category Ribbon Selector */}
-        <div className="sticky top-20 z-30 bg-[#F7F5F0]/95 backdrop-blur-md py-3 border-y border-stone-300 mb-8 -mx-4 px-4">
+        <div className="sticky top-20 z-30 bg-white/95 backdrop-blur-md py-3 border-y border-zinc-200 shadow-sm mb-8 -mx-4 px-4">
           <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
             <button
               onClick={() => setActiveCategorySlug("all")}
               className={`px-4 py-2 text-xs font-bold uppercase tracking-[0.15em] whitespace-nowrap transition ${
                 activeCategorySlug === "all"
-                  ? "bg-zinc-900 text-white"
-                  : "bg-[#E2E4E6] text-zinc-800 hover:bg-stone-300"
+                  ? "bg-zinc-950 text-white shadow-sm"
+                  : "bg-zinc-100 text-zinc-700 hover:bg-zinc-200 border border-zinc-200/60"
               }`}
               style={{
                 clipPath:
@@ -915,10 +915,10 @@ export default function RestaurantClient({ initialData }: Props) {
                 }
                 className={`px-4 py-2 text-xs font-bold uppercase tracking-[0.15em] whitespace-nowrap transition ${
                   activeCategorySlug === cat.slug
-                    ? "bg-amber-700 text-white"
+                    ? "bg-amber-700 text-white shadow-sm"
                     : cat.culinary_group === "kids"
                     ? "bg-[#1997A9] text-white hover:opacity-90"
-                    : "bg-[#E2E4E6] text-zinc-900 hover:bg-stone-300"
+                    : "bg-zinc-100 text-zinc-800 hover:bg-zinc-200 border border-zinc-200/60"
                 }`}
                 style={{
                   clipPath:
@@ -1061,7 +1061,7 @@ export default function RestaurantClient({ initialData }: Props) {
                     {/* PDF Grey Chevron Ribbon Category Header */}
                     <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
                       <div
-                        className="inline-block bg-[#E2E4E6] text-zinc-950 px-6 py-2.5 pr-10 text-base sm:text-lg font-extrabold uppercase tracking-[0.28em]"
+                        className="inline-block bg-zinc-950 text-white px-6 py-2.5 pr-10 text-base sm:text-lg font-extrabold uppercase tracking-[0.28em] shadow-sm"
                         style={{
                           clipPath:
                             "polygon(0 0, 100% 0, calc(100% - 14px) 50%, 100% 100%, 0 100%)",
@@ -1274,7 +1274,7 @@ export default function RestaurantClient({ initialData }: Props) {
             </div>
 
             {/* Google Rating Summary Box */}
-            <div className="flex flex-wrap items-center gap-5 bg-[#F8F6F1] p-4 sm:px-6 border border-stone-200">
+            <div className="flex flex-wrap items-center gap-5 bg-zinc-50 p-4 sm:px-6 border border-zinc-200 shadow-sm">
               <div className="flex items-center gap-3">
                 <div className="text-3xl sm:text-4xl font-extrabold text-zinc-950">
                   {settings.google_rating || "4.8"}
@@ -1341,7 +1341,7 @@ export default function RestaurantClient({ initialData }: Props) {
               {reviews.map((rev) => (
                 <div
                   key={rev.id}
-                  className="w-[84vw] max-w-[340px] md:w-auto shrink-0 snap-start bg-[#F8F6F1] border border-stone-200 p-5 sm:p-6 flex flex-col justify-between hover:shadow-md transition"
+                  className="w-[84vw] max-w-[340px] md:w-auto shrink-0 snap-start bg-zinc-50 border border-zinc-200/90 p-5 sm:p-6 flex flex-col justify-between hover:shadow-md transition shadow-xs"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-3 mb-4">
@@ -1411,11 +1411,11 @@ export default function RestaurantClient({ initialData }: Props) {
       </section>
 
       {/* ================= CONTACTS, MAP & SISTER VENUES (PDF PAGE 16) ================= */}
-      <section id="contacts" className="py-14 md:py-16 bg-[#F7F5F0]">
+      <section id="contacts" className="py-14 md:py-16 bg-zinc-50 border-t border-zinc-200">
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             {/* Left Info Box */}
-            <div className="lg:col-span-5 bg-white border border-stone-200 p-6 sm:p-8 flex flex-col justify-between space-y-6">
+            <div className="lg:col-span-5 bg-white border border-zinc-200 p-6 sm:p-8 flex flex-col justify-between space-y-6 shadow-sm">
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
                   <LogoDiamond size="sm" />
