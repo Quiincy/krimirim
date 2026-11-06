@@ -546,16 +546,11 @@ export default function RestaurantClient({ initialData }: Props) {
                       className="w-full h-full object-cover hover:scale-105 transition duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    <div className="absolute bottom-4 left-4 right-4 text-white flex items-end justify-between">
-                      <div>
-                        <span className="inline-block px-2 py-0.5 bg-amber-600 text-[10px] font-bold uppercase tracking-widest mb-1">
-                          Ручна робота
-                        </span>
-                        <p className="text-sm font-semibold tracking-wide uppercase">
-                          Домашня паста Путтанеска
-                        </p>
-                      </div>
-                      <span className="text-sm font-bold bg-black/70 px-2.5 py-1">
+                    <div className="absolute bottom-4 left-4 right-4 text-white flex items-end justify-between gap-3">
+                      <p className="text-sm sm:text-base font-semibold tracking-wide uppercase drop-shadow">
+                        Домашня паста Путтанеска
+                      </p>
+                      <span className="text-sm sm:text-base font-bold bg-black/80 backdrop-blur-sm px-2.5 py-1 whitespace-nowrap shrink-0 border border-white/10">
                         290.00 ₴
                       </span>
                     </div>
@@ -927,14 +922,14 @@ export default function RestaurantClient({ initialData }: Props) {
                               <span className="text-base sm:text-lg font-medium tracking-wide">
                                 {item.quote_badge || item.name}
                               </span>
-                              <div className="flex items-baseline gap-4 shrink-0">
+                              <div className="flex items-baseline gap-2 sm:gap-4 shrink-0">
                                 {item.weight && (
-                                  <span className="text-xs sm:text-sm opacity-90">
+                                  <span className="text-xs sm:text-sm opacity-90 whitespace-nowrap">
                                     {item.weight}
                                   </span>
                                 )}
-                                <span className="text-lg sm:text-xl font-bold">
-                                  {item.price} ₴
+                                <span className="text-base sm:text-xl font-bold whitespace-nowrap">
+                                  {item.price}&nbsp;₴
                                 </span>
                               </div>
                             </div>
@@ -1067,8 +1062,8 @@ export default function RestaurantClient({ initialData }: Props) {
                               <div className="flex-1 border-b-2 border-dotted border-stone-300 mx-1 min-w-[20px] hidden sm:block" />
 
                               {/* Price */}
-                              <div className="text-sm sm:text-base font-bold text-zinc-950 whitespace-nowrap shrink-0">
-                                {item.price}{" "}
+                              <div className="text-sm sm:text-base font-bold text-zinc-950 whitespace-nowrap shrink-0 text-right">
+                                {item.price}&nbsp;
                                 <span className="text-xs font-normal text-zinc-500">
                                   ₴
                                 </span>
