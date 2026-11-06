@@ -368,7 +368,7 @@ export default function RestaurantClient({ initialData }: Props) {
               <LogoDiamond size="md" />
             </div>
             <div className="hidden sm:block lg:hidden xl:block">
-              <div className="text-lg font-bold tracking-[0.2em] uppercase text-zinc-900 leading-none">
+              <div className="text-lg font-bold tracking-[0.2em] uppercase text-zinc-900 leading-none font-serif">
                 КРИМ & РИМ
               </div>
               <div className="text-[11px] text-zinc-500 tracking-widest uppercase mt-1">
@@ -1552,7 +1552,7 @@ export default function RestaurantClient({ initialData }: Props) {
               <div className="flex items-center gap-3">
                 <LogoDiamond size="sm" />
                 <div>
-                  <span className="text-base font-extrabold uppercase tracking-[0.25em] text-white block">
+                  <span className="text-base font-extrabold uppercase tracking-[0.25em] text-white block font-serif">
                     КРИМ &amp; РИМ
                   </span>
                   <span className="text-[11px] text-zinc-400 uppercase tracking-widest">
