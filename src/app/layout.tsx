@@ -29,6 +29,17 @@ export const metadata: Metadata = {
   title: "Ресторан «Крим & Рим» у Києві | Меню, Піца з дров'яної печі, Мангал",
   description:
     "Ресторан кримськотатарської та італійської кухні у Києві (вул. Братства Тарасівців, 3, м. Харківська). Чебуреки, янтики, шурпа, лагман, шашлик на вугіллі, піца з дров'яної печі та домашня паста.",
+  icons: {
+    icon: [
+      { url: "/favicon.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon-192.png", sizes: "192x192", type: "image/png" },
+      { url: "/icon-512.png", sizes: "512x512", type: "image/png" },
+    ],
+    apple: [
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   openGraph: {
     title: "Ресторан «Крим & Рим» — Кримськотатарська та Італійська кухня",
     description:
