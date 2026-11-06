@@ -1756,7 +1756,7 @@ export default function RestaurantClient({ initialData }: Props) {
           {/* Bottom Copyright Bar */}
           <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-zinc-500 text-xs">
             <div className="flex items-center gap-2 text-center sm:text-left">
-              <span>© 2026 Creamy Rim («Крим &amp; Рим»). Всі права захищено.</span>
+              <span>© 2026 КРИМ &amp; РИМ. Всі права захищено.</span>
             </div>
 
             <div className="flex items-center gap-4 text-center sm:text-right">
