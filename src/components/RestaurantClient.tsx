@@ -353,7 +353,7 @@ export default function RestaurantClient({ initialData }: Props) {
           {/* Mobile Burger Button */}
           <button
             onClick={() => setMobileNavOpen(!mobileNavOpen)}
-            className="lg:hidden p-2.5 rounded-lg border border-stone-200 text-zinc-800 hover:bg-stone-100"
+            className="lg:hidden p-2.5 rounded-full border border-zinc-200 text-zinc-800 hover:bg-zinc-100 transition"
             aria-label="Меню навігації"
           >
             {mobileNavOpen ? <X className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
@@ -383,7 +383,7 @@ export default function RestaurantClient({ initialData }: Props) {
               href="/menu.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-none border border-zinc-900 text-xs font-semibold uppercase tracking-wider text-zinc-900 hover:bg-zinc-900 hover:text-white transition"
+              className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full border border-zinc-900 text-xs font-semibold uppercase tracking-wider text-zinc-900 hover:bg-zinc-900 hover:text-white transition"
               title="Відкрити оригінальне PDF меню"
             >
               <FileText className="w-3.5 h-3.5" />
@@ -395,7 +395,7 @@ export default function RestaurantClient({ initialData }: Props) {
                 setBookingSuccess(false);
                 setBookingModalOpen(true);
               }}
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-zinc-950 text-white text-xs font-semibold uppercase tracking-widest hover:bg-amber-700 transition shadow-sm"
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-zinc-950 text-white text-xs font-semibold uppercase tracking-widest hover:bg-amber-700 transition shadow-sm"
             >
               <Calendar className="w-3.5 h-3.5" />
               <span>Бронювати стіл</span>
@@ -413,33 +413,33 @@ export default function RestaurantClient({ initialData }: Props) {
 
         {/* Mobile Drawer */}
         {mobileNavOpen && (
-          <div className="lg:hidden bg-white border-t border-stone-200 px-4 py-5 space-y-4 shadow-xl">
-            <div className="grid grid-cols-2 gap-2 text-sm font-semibold uppercase tracking-wider">
+          <div className="lg:hidden bg-white border-t border-zinc-200 px-4 py-5 space-y-4 shadow-xl">
+            <div className="grid grid-cols-2 gap-2.5 text-sm font-semibold uppercase tracking-wider">
               <a
                 href="#menu"
                 onClick={() => setMobileNavOpen(false)}
-                className="p-3 bg-stone-100 rounded text-center"
+                className="p-3 bg-zinc-100 rounded-2xl text-center hover:bg-zinc-200 transition"
               >
                 📖 Меню
               </a>
               <a
                 href="#concept"
                 onClick={() => setMobileNavOpen(false)}
-                className="p-3 bg-stone-100 rounded text-center"
+                className="p-3 bg-zinc-100 rounded-2xl text-center hover:bg-zinc-200 transition"
               >
                 🏛️ Концепція
               </a>
               <a
                 href="#gallery"
                 onClick={() => setMobileNavOpen(false)}
-                className="p-3 bg-stone-100 rounded text-center"
+                className="p-3 bg-zinc-100 rounded-2xl text-center hover:bg-zinc-200 transition"
               >
                 📸 Фотогалерея
               </a>
               <a
                 href="#reviews"
                 onClick={() => setMobileNavOpen(false)}
-                className="p-3 bg-stone-100 rounded text-center"
+                className="p-3 bg-zinc-100 rounded-2xl text-center hover:bg-zinc-200 transition"
               >
                 ⭐ Відгуки
               </a>
@@ -480,7 +480,7 @@ export default function RestaurantClient({ initialData }: Props) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
             {/* Left Column: Editorial Typography & Concept */}
             <div className="lg:col-span-7 space-y-6">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-stone-100 border border-stone-300 text-xs uppercase tracking-[0.2em] font-semibold text-zinc-800">
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-zinc-100 border border-zinc-200 text-xs uppercase tracking-[0.2em] font-semibold text-zinc-800">
                 <span>Кримськотатарська</span>
                 <span className="text-amber-600">&amp;</span>
                 <span>Італійська кухня</span>
@@ -508,7 +508,7 @@ export default function RestaurantClient({ initialData }: Props) {
 
               {/* Key Highlights Badges */}
               <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
-                <div className="p-3.5 bg-white border border-zinc-200 shadow-sm">
+                <div className="p-4 bg-white border border-zinc-200/90 shadow-sm rounded-2xl">
                   <div className="text-xs uppercase tracking-widest text-zinc-500">
                     Дров&apos;яна піч
                   </div>
@@ -516,7 +516,7 @@ export default function RestaurantClient({ initialData }: Props) {
                     14 видів піци
                   </div>
                 </div>
-                <div className="p-3.5 bg-white border border-zinc-200 shadow-sm">
+                <div className="p-4 bg-white border border-zinc-200/90 shadow-sm rounded-2xl">
                   <div className="text-xs uppercase tracking-widest text-zinc-500">
                     Живий вогонь
                   </div>
@@ -524,7 +524,7 @@ export default function RestaurantClient({ initialData }: Props) {
                     Мангал &amp; Хоспер
                   </div>
                 </div>
-                <div className="p-3.5 bg-white border border-zinc-200 shadow-sm">
+                <div className="p-4 bg-white border border-zinc-200/90 shadow-sm rounded-2xl">
                   <div className="text-xs uppercase tracking-widest text-zinc-500">
                     Будні 11–15
                   </div>
@@ -532,7 +532,7 @@ export default function RestaurantClient({ initialData }: Props) {
                     Знижка -20%
                   </div>
                 </div>
-                <div className="p-3.5 bg-white border border-zinc-200 shadow-sm">
+                <div className="p-4 bg-white border border-zinc-200/90 shadow-sm rounded-2xl">
                   <div className="text-xs uppercase tracking-widest text-zinc-500">
                     Google Карти
                   </div>
@@ -550,7 +550,7 @@ export default function RestaurantClient({ initialData }: Props) {
               <div className="flex flex-wrap items-center gap-4 pt-2">
                 <a
                   href="#menu"
-                  className="inline-flex items-center gap-3 px-7 py-4 bg-zinc-950 text-white text-xs sm:text-sm font-bold uppercase tracking-[0.2em] hover:bg-amber-700 transition shadow-md"
+                  className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-zinc-950 text-white text-xs sm:text-sm font-bold uppercase tracking-[0.2em] hover:bg-amber-700 transition shadow-md"
                 >
                   <Utensils className="w-4 h-4" />
                   <span>Відкрити повне меню</span>
@@ -560,7 +560,7 @@ export default function RestaurantClient({ initialData }: Props) {
                     setBookingSuccess(false);
                     setBookingModalOpen(true);
                   }}
-                  className="inline-flex items-center gap-2 px-6 py-4 bg-white border-2 border-zinc-950 text-zinc-950 text-xs sm:text-sm font-bold uppercase tracking-[0.18em] hover:bg-stone-100 transition"
+                  className="inline-flex items-center gap-2 px-7 py-4 rounded-full bg-white border-2 border-zinc-950 text-zinc-950 text-xs sm:text-sm font-bold uppercase tracking-[0.18em] hover:bg-zinc-100 transition shadow-sm"
                 >
                   <Calendar className="w-4 h-4" />
                   <span>Забронювати столик</span>
@@ -600,7 +600,7 @@ export default function RestaurantClient({ initialData }: Props) {
                   {/* Right Vertical Black "м е н ю" Banner from PDF Page 1 */}
                   <a
                     href="#menu"
-                    className="absolute -right-4 top-20 z-20 bg-zinc-950 text-white py-7 px-3 flex flex-col items-center justify-center shadow-lg hover:bg-amber-800 transition group"
+                    className="absolute -right-4 top-20 z-20 bg-zinc-950 text-white py-7 px-3.5 rounded-l-2xl flex flex-col items-center justify-center shadow-lg hover:bg-amber-800 transition group"
                     title="Перейти до меню"
                   >
                     <span
@@ -615,7 +615,7 @@ export default function RestaurantClient({ initialData }: Props) {
                   </a>
 
                   {/* Main Cover Photo */}
-                  <div className="relative aspect-[3/4] overflow-hidden bg-stone-100">
+                  <div className="relative aspect-[3/4] overflow-hidden rounded-3xl shadow-xl border border-zinc-200/80 bg-zinc-100">
                     <img
                       src="/images/cover_pasta.jpg"
                       alt="Домашня паста Крим і Рим"
@@ -626,7 +626,7 @@ export default function RestaurantClient({ initialData }: Props) {
                       <p className="text-sm sm:text-base font-semibold tracking-wide uppercase drop-shadow">
                         Домашня паста Путтанеска
                       </p>
-                      <span className="text-sm sm:text-base font-bold bg-black/80 backdrop-blur-sm px-2.5 py-1 whitespace-nowrap shrink-0 border border-white/10">
+                      <span className="text-sm sm:text-base font-bold bg-black/80 backdrop-blur-sm px-3 py-1 rounded-full whitespace-nowrap shrink-0 border border-white/10">
                         290.00 ₴
                       </span>
                     </div>
@@ -652,7 +652,7 @@ export default function RestaurantClient({ initialData }: Props) {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
             {/* CRIMEA CARD */}
-            <div className="group bg-white border border-zinc-200 overflow-hidden shadow-sm hover:shadow-xl transition flex flex-col">
+            <div className="group bg-white border border-zinc-200 overflow-hidden shadow-sm hover:shadow-xl transition flex flex-col rounded-3xl">
               <div className="relative h-64 sm:h-72 overflow-hidden">
                 <img
                   src="/images/interior_crimea_sofas.jpg"
@@ -669,7 +669,7 @@ export default function RestaurantClient({ initialData }: Props) {
                   </h3>
                 </div>
               </div>
-              <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-4">
                 <p className="text-sm text-zinc-600 leading-relaxed">
                   Затишна зала з кримськотатарськими килимами ручної роботи,
                   м’якими орнаментованими кріслами та теплим мідним світлом. У
@@ -677,14 +677,14 @@ export default function RestaurantClient({ initialData }: Props) {
                   пікантна шурпа з нутом, лагман, махан, люля-кебаб і шашлик на
                   вугіллі.
                 </p>
-                <div className="flex items-center justify-between pt-2 border-t border-stone-100">
+                <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-zinc-100">
                   <button
                     onClick={() => {
                       setActiveGroup("crimea");
                       setActiveCategorySlug("all");
                       document.getElementById("menu")?.scrollIntoView({ behavior: "smooth" });
                     }}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-amber-800 hover:text-zinc-950"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-zinc-100 hover:bg-zinc-200 text-xs font-bold uppercase tracking-wider text-zinc-900 transition"
                   >
                     <span>Страви Криму</span>
                     <ChevronRight className="w-4 h-4" />
@@ -695,7 +695,7 @@ export default function RestaurantClient({ initialData }: Props) {
                       setBookingSuccess(false);
                       setBookingModalOpen(true);
                     }}
-                    className="text-xs font-semibold uppercase tracking-wider text-zinc-600 hover:text-zinc-950 underline underline-offset-4"
+                    className="inline-flex items-center px-4 py-2 rounded-full bg-amber-700 hover:bg-amber-800 text-white text-xs font-bold uppercase tracking-wider transition shadow-xs"
                   >
                     Забронювати у залі «Крим»
                   </button>
@@ -704,7 +704,7 @@ export default function RestaurantClient({ initialData }: Props) {
             </div>
 
             {/* ROME CARD */}
-            <div className="group bg-white border border-zinc-200 overflow-hidden shadow-sm hover:shadow-xl transition flex flex-col">
+            <div className="group bg-white border border-zinc-200 overflow-hidden shadow-sm hover:shadow-xl transition flex flex-col rounded-3xl">
               <div className="relative h-64 sm:h-72 overflow-hidden">
                 <img
                   src="/images/interior_rome_arches.jpg"
@@ -721,7 +721,7 @@ export default function RestaurantClient({ initialData }: Props) {
                   </h3>
                 </div>
               </div>
-              <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
+              <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between space-y-4">
                 <p className="text-sm text-zinc-600 leading-relaxed">
                   Світла кам’яна кладка, високі аркові вікна, барокові карнизи,
                   віденські бістро-стільці та відкрита дров’яна піч. Тут готують
@@ -729,14 +729,14 @@ export default function RestaurantClient({ initialData }: Props) {
                   равіолі з качкою чи кроликом, вітелло тоннато, карпачо та
                   авторські коктейлі.
                 </p>
-                <div className="flex items-center justify-between pt-2 border-t border-stone-100">
+                <div className="flex flex-wrap items-center justify-between gap-3 pt-4 border-t border-zinc-100">
                   <button
                     onClick={() => {
                       setActiveGroup("rome");
                       setActiveCategorySlug("all");
                       document.getElementById("menu")?.scrollIntoView({ behavior: "smooth" });
                     }}
-                    className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-widest text-zinc-900 hover:text-amber-700"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-zinc-100 hover:bg-zinc-200 text-xs font-bold uppercase tracking-wider text-zinc-900 transition"
                   >
                     <span>Страви Риму</span>
                     <ChevronRight className="w-4 h-4" />
@@ -747,7 +747,7 @@ export default function RestaurantClient({ initialData }: Props) {
                       setBookingSuccess(false);
                       setBookingModalOpen(true);
                     }}
-                    className="text-xs font-semibold uppercase tracking-wider text-zinc-600 hover:text-zinc-950 underline underline-offset-4"
+                    className="inline-flex items-center px-4 py-2 rounded-full bg-zinc-950 hover:bg-amber-700 text-white text-xs font-bold uppercase tracking-wider transition shadow-xs"
                   >
                     Забронювати у залі «Рим»
                   </button>
@@ -759,190 +759,196 @@ export default function RestaurantClient({ initialData }: Props) {
       </section>
 
       {/* ================= FULL INTERACTIVE MENU SECTION ================= */}
-      <section id="menu" className="py-10 md:py-16 max-w-7xl mx-auto px-3 sm:px-6 w-full">
-        {/* Section Title */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
-          <div>
-            <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-amber-800 font-semibold">
-              <span>Повне актуальне меню закладу</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold tracking-wide uppercase text-zinc-950 mt-1">
-              Меню «Крим &amp; Рим»
-            </h2>
-          </div>
-
-          {/* Search & Quick Toggles */}
-          <div className="flex flex-wrap items-center gap-2.5">
-            <div className="relative flex-1 sm:w-72">
-              <Search className="w-4 h-4 text-zinc-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
-              <input
-                type="text"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Пошук страви або інгредієнта..."
-                className="w-full pl-10 pr-8 py-2.5 bg-white border border-zinc-200 text-base md:text-sm rounded-lg focus:outline-none focus:border-zinc-900 shadow-xs"
-              />
-              {searchQuery && (
-                <button
-                  onClick={() => setSearchQuery("")}
-                  className="absolute right-2.5 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-800"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              )}
+      <section id="menu" className="py-10 md:py-16 w-full">
+        {/* Section Title & Search */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+            <div>
+              <div className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.25em] text-amber-800 font-semibold">
+                <span>Повне актуальне меню закладу</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold tracking-wide uppercase text-zinc-950 mt-1">
+                Меню «Крим &amp; Рим»
+              </h2>
             </div>
 
-            <button
-              onClick={() => setOnlyPopular(!onlyPopular)}
-              className={`px-3.5 py-2.5 text-xs font-bold uppercase tracking-wider border rounded-lg transition inline-flex items-center gap-1.5 ${
-                onlyPopular
-                  ? "bg-amber-600 text-white border-amber-600 shadow-xs"
-                  : "bg-white text-zinc-700 border-zinc-200 hover:border-zinc-900 shadow-xs"
-              }`}
-            >
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Хіти</span>
-            </button>
+            {/* Search & Quick Toggles */}
+            <div className="flex flex-wrap items-center gap-2.5">
+              <div className="relative flex-1 sm:w-72">
+                <Search className="w-4 h-4 text-zinc-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Пошук страви або інгредієнта..."
+                  className="w-full pl-10 pr-8 py-2.5 bg-white border border-zinc-200 text-base md:text-sm rounded-full focus:outline-none focus:border-zinc-900 shadow-xs"
+                />
+                {searchQuery && (
+                  <button
+                    onClick={() => setSearchQuery("")}
+                    className="absolute right-2.5 top-1/2 -translate-y-1/2 text-zinc-400 hover:text-zinc-800 p-1 rounded-full"
+                  >
+                    <X className="w-4 h-4" />
+                  </button>
+                )}
+              </div>
 
-            <button
-              onClick={() => setOnlyWithPhoto(!onlyWithPhoto)}
-              className={`px-3.5 py-2.5 text-xs font-bold uppercase tracking-wider border rounded-lg transition inline-flex items-center gap-1.5 ${
-                onlyWithPhoto
-                  ? "bg-zinc-950 text-white border-zinc-950 shadow-xs"
-                  : "bg-white text-zinc-700 border-zinc-200 hover:border-zinc-900 shadow-xs"
-              }`}
-            >
-              <Eye className="w-3.5 h-3.5" />
-              <span>З фото</span>
-            </button>
-          </div>
-        </div>
-
-        {/* Macro Culinary Direction Filter Tabs */}
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mb-6">
-          {[
-            { id: "all", label: "Усе меню", count: menuItems.length },
-            {
-              id: "crimea",
-              label: "🌙 Кухня Криму",
-              count: menuItems.filter((i) =>
-                categories
-                  .filter((c) => c.culinary_group === "crimea")
-                  .some((c) => c.slug === i.category_slug)
-              ).length,
-            },
-            {
-              id: "rome",
-              label: "🏛️ Кухня Риму",
-              count: menuItems.filter((i) =>
-                categories
-                  .filter((c) => c.culinary_group === "rome")
-                  .some((c) => c.slug === i.category_slug)
-              ).length,
-            },
-            {
-              id: "grill",
-              label: "🔥 На вугіллі",
-              count: menuItems.filter((i) => i.category_slug === "grill").length,
-            },
-            {
-              id: "kids",
-              label: "🐱 Дитяче меню",
-              count: menuItems.filter((i) => i.category_slug === "kids").length,
-            },
-            {
-              id: "bar",
-              label: "🍸 Бар & Напої",
-              count: menuItems.filter((i) =>
-                categories
-                  .filter((c) => c.culinary_group === "bar")
-                  .some((c) => c.slug === i.category_slug)
-              ).length,
-            },
-          ].map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => {
-                setActiveGroup(tab.id);
-                setActiveCategorySlug("all");
-              }}
-              className={`px-3 py-2.5 text-xs font-bold uppercase tracking-wider rounded-lg border text-center transition flex items-center justify-center gap-1.5 ${
-                activeGroup === tab.id
-                  ? "bg-zinc-950 text-white border-zinc-950 shadow-sm"
-                  : "bg-white text-zinc-700 border-zinc-200 hover:bg-zinc-50 shadow-xs"
-              }`}
-            >
-              <span>{tab.label}</span>
-              <span
-                className={`text-[10px] px-1.5 py-0.5 rounded-full ${
-                  activeGroup === tab.id
-                    ? "bg-white/20 text-white"
-                    : "bg-zinc-100 text-zinc-500"
-                }`}
-              >
-                {tab.count}
-              </span>
-            </button>
-          ))}
-        </div>
-
-        {/* Sticky Category Navigation Bar */}
-        <div className="sticky top-20 z-30 bg-[#FAFAFA]/95 backdrop-blur-md py-3 border-y border-zinc-200/80 mb-10 -mx-3 sm:mx-0 px-3 sm:px-0">
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
-            <button
-              onClick={() => setActiveCategorySlug("all")}
-              className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider whitespace-nowrap transition ${
-                activeCategorySlug === "all"
-                  ? "bg-zinc-950 text-white shadow-sm"
-                  : "bg-white text-zinc-700 hover:bg-zinc-100 border border-zinc-200/80 shadow-xs"
-              }`}
-            >
-              Усі категорії ({visibleCategories.length})
-            </button>
-
-            {visibleCategories.map((cat) => (
               <button
-                key={cat.slug}
-                onClick={() =>
-                  setActiveCategorySlug(
-                    activeCategorySlug === cat.slug ? "all" : cat.slug
-                  )
-                }
-                className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider whitespace-nowrap transition ${
-                  activeCategorySlug === cat.slug
-                    ? "bg-amber-700 text-white shadow-sm"
-                    : cat.culinary_group === "kids"
-                    ? "bg-[#1997A9] text-white hover:opacity-90 shadow-xs"
-                    : "bg-white text-zinc-700 hover:bg-zinc-100 border border-zinc-200/80 shadow-xs"
+                onClick={() => setOnlyPopular(!onlyPopular)}
+                className={`px-4 py-2.5 text-xs font-bold uppercase tracking-wider border rounded-full transition inline-flex items-center gap-1.5 ${
+                  onlyPopular
+                    ? "bg-amber-600 text-white border-amber-600 shadow-xs"
+                    : "bg-white text-zinc-700 border-zinc-200 hover:border-zinc-900 shadow-xs"
                 }`}
               >
-                {cat.name}
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Хіти</span>
+              </button>
+
+              <button
+                onClick={() => setOnlyWithPhoto(!onlyWithPhoto)}
+                className={`px-4 py-2.5 text-xs font-bold uppercase tracking-wider border rounded-full transition inline-flex items-center gap-1.5 ${
+                  onlyWithPhoto
+                    ? "bg-zinc-950 text-white border-zinc-950 shadow-xs"
+                    : "bg-white text-zinc-700 border-zinc-200 hover:border-zinc-900 shadow-xs"
+                }`}
+              >
+                <Eye className="w-3.5 h-3.5" />
+                <span>З фото</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Macro Culinary Direction Filter Tabs */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mb-6">
+            {[
+              { id: "all", label: "Усе меню", count: menuItems.length },
+              {
+                id: "crimea",
+                label: "🌙 Кухня Криму",
+                count: menuItems.filter((i) =>
+                  categories
+                    .filter((c) => c.culinary_group === "crimea")
+                    .some((c) => c.slug === i.category_slug)
+                ).length,
+              },
+              {
+                id: "rome",
+                label: "🏛️ Кухня Риму",
+                count: menuItems.filter((i) =>
+                  categories
+                    .filter((c) => c.culinary_group === "rome")
+                    .some((c) => c.slug === i.category_slug)
+                ).length,
+              },
+              {
+                id: "grill",
+                label: "🔥 На вугіллі",
+                count: menuItems.filter((i) => i.category_slug === "grill").length,
+              },
+              {
+                id: "kids",
+                label: "🐱 Дитяче меню",
+                count: menuItems.filter((i) => i.category_slug === "kids").length,
+              },
+              {
+                id: "bar",
+                label: "🍸 Бар & Напої",
+                count: menuItems.filter((i) =>
+                  categories
+                    .filter((c) => c.culinary_group === "bar")
+                    .some((c) => c.slug === i.category_slug)
+                ).length,
+              },
+            ].map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => {
+                  setActiveGroup(tab.id);
+                  setActiveCategorySlug("all");
+                }}
+                className={`px-3 py-2.5 text-xs font-bold uppercase tracking-wider rounded-full border text-center transition flex items-center justify-center gap-1.5 ${
+                  activeGroup === tab.id
+                    ? "bg-zinc-950 text-white border-zinc-950 shadow-sm"
+                    : "bg-white text-zinc-700 border-zinc-200 hover:bg-zinc-50 shadow-xs"
+                }`}
+              >
+                <span>{tab.label}</span>
+                <span
+                  className={`text-[10px] px-1.5 py-0.5 rounded-full ${
+                    activeGroup === tab.id
+                      ? "bg-white/20 text-white"
+                      : "bg-zinc-100 text-zinc-500"
+                  }`}
+                >
+                  {tab.count}
+                </span>
               </button>
             ))}
           </div>
         </div>
 
-        {/* Open Luxury Menu List (No Box Borders, Full Width on Mobile) */}
+        {/* Sticky Category Navigation Bar */}
+        <div className="sticky top-20 z-30 bg-[#FAFAFA]/95 backdrop-blur-md py-3 border-y border-zinc-200/80 mb-10 w-full">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1">
+              <button
+                onClick={() => setActiveCategorySlug("all")}
+                className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider whitespace-nowrap transition ${
+                  activeCategorySlug === "all"
+                    ? "bg-zinc-950 text-white shadow-sm"
+                    : "bg-white text-zinc-700 hover:bg-zinc-100 border border-zinc-200/80 shadow-xs"
+                }`}
+              >
+                Усі категорії ({visibleCategories.length})
+              </button>
+
+              {visibleCategories.map((cat) => (
+                <button
+                  key={cat.slug}
+                  onClick={() =>
+                    setActiveCategorySlug(
+                      activeCategorySlug === cat.slug ? "all" : cat.slug
+                    )
+                  }
+                  className={`px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wider whitespace-nowrap transition ${
+                    activeCategorySlug === cat.slug
+                      ? "bg-amber-700 text-white shadow-sm"
+                      : cat.culinary_group === "kids"
+                      ? "bg-[#1997A9] text-white hover:opacity-90 shadow-xs"
+                      : "bg-white text-zinc-700 hover:bg-zinc-100 border border-zinc-200/80 shadow-xs"
+                  }`}
+                >
+                  {cat.name}
+                </button>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Open Luxury Menu List (Images 100% Full Width on Mobile) */}
         {filteredCategoriesWithItems.length === 0 ? (
-          <div className="bg-white border border-zinc-200 p-12 text-center space-y-4 rounded-xl shadow-xs">
-            <p className="text-lg text-zinc-600">
-              За вашим запитом не знайдено страв.
-            </p>
-            <button
-              onClick={() => {
-                setSearchQuery("");
-                setOnlyPopular(false);
-                setOnlyWithPhoto(false);
-                setActiveGroup("all");
-                setActiveCategorySlug("all");
-              }}
-              className="px-5 py-2.5 bg-zinc-900 text-white text-xs font-bold uppercase tracking-widest rounded-lg"
-            >
-              Скинути фільтри
-            </button>
+          <div className="max-w-7xl mx-auto px-4 sm:px-6">
+            <div className="bg-white border border-zinc-200 p-12 text-center space-y-4 rounded-3xl shadow-xs">
+              <p className="text-lg text-zinc-600">
+                За вашим запитом не знайдено страв.
+              </p>
+              <button
+                onClick={() => {
+                  setSearchQuery("");
+                  setOnlyPopular(false);
+                  setOnlyWithPhoto(false);
+                  setActiveGroup("all");
+                  setActiveCategorySlug("all");
+                }}
+                className="px-6 py-3 bg-zinc-900 text-white text-xs font-bold uppercase tracking-widest rounded-full"
+              >
+                Скинути фільтри
+              </button>
+            </div>
           </div>
         ) : (
-          <div className="space-y-16 sm:space-y-20">
+          <div className="space-y-16 sm:space-y-20 w-full">
             {filteredCategoriesWithItems.map(({ category, items }) => {
               // Special rendering for Kids Menu
               if (category.culinary_group === "kids" || category.slug === "kids") {
@@ -950,56 +956,60 @@ export default function RestaurantClient({ initialData }: Props) {
                   <div
                     key={category.slug}
                     id={`cat-${category.slug}`}
-                    className="scroll-mt-28"
+                    className="scroll-mt-28 w-full"
                   >
-                    {/* Kids Menu Banner */}
-                    <div className="relative overflow-hidden -mx-3 sm:mx-0 sm:rounded-2xl bg-gradient-to-r from-teal-700 via-cyan-700 to-sky-700 text-white p-6 sm:p-8 mb-6 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
-                      <div className="space-y-1 text-center sm:text-left">
-                        <span className="text-xs uppercase tracking-[0.25em] text-teal-200 font-bold block">
-                          Для наших маленьких гостей
-                        </span>
-                        <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold tracking-wide uppercase">
-                          {category.name}
-                        </h3>
-                        <p className="text-xs sm:text-sm text-teal-100 italic">
-                          Корисні, смачні та улюблені дитячі страви з ніжних інгредієнтів
-                        </p>
+                    {/* Kids Menu Banner: 100% full width on mobile, rounded-3xl on tablet/desktop */}
+                    <div className="w-full sm:max-w-7xl sm:mx-auto sm:px-6 mb-6">
+                      <div className="relative overflow-hidden w-full sm:rounded-3xl bg-gradient-to-r from-teal-700 via-cyan-700 to-sky-700 text-white p-6 sm:p-8 shadow-sm flex flex-col sm:flex-row items-center justify-between gap-6">
+                        <div className="space-y-1 text-center sm:text-left">
+                          <span className="text-xs uppercase tracking-[0.25em] text-teal-200 font-bold block">
+                            Для наших маленьких гостей
+                          </span>
+                          <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold tracking-wide uppercase">
+                            {category.name}
+                          </h3>
+                          <p className="text-xs sm:text-sm text-teal-100 italic">
+                            Корисні, смачні та улюблені дитячі страви з ніжних інгредієнтів
+                          </p>
+                        </div>
+                        <KidsMenuCatIllustration className="w-24 h-20 sm:w-32 sm:h-24 shrink-0" />
                       </div>
-                      <KidsMenuCatIllustration className="w-24 h-20 sm:w-32 sm:h-24 shrink-0" />
                     </div>
 
                     {/* Kids Menu Open List */}
-                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4">
-                      {items.map((item) => (
-                        <div
-                          key={item.id}
-                          className="flex items-start justify-between gap-4 p-4 rounded-xl bg-white border border-zinc-200/80 shadow-xs hover:border-cyan-400/70 hover:shadow-sm transition"
-                        >
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-center gap-2">
-                              <span className="inline-block w-2 h-2 rounded-full bg-cyan-500 shrink-0" />
-                              <h4 className="text-sm sm:text-base font-bold text-zinc-950">
-                                {item.quote_badge || item.name}
-                              </h4>
-                            </div>
-                            {item.description && (
-                              <p className="text-xs sm:text-sm text-zinc-600 mt-1 pl-4">
-                                {item.description}
-                              </p>
-                            )}
-                          </div>
-                          <div className="text-right shrink-0">
-                            {item.weight && (
-                              <div className="text-xs text-zinc-400 font-mono">
-                                {item.weight}
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                      <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-4">
+                        {items.map((item) => (
+                          <div
+                            key={item.id}
+                            className="flex items-start justify-between gap-4 p-4 rounded-2xl bg-white border border-zinc-200/80 shadow-xs hover:border-cyan-400/70 hover:shadow-sm transition"
+                          >
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2">
+                                <span className="inline-block w-2 h-2 rounded-full bg-cyan-500 shrink-0" />
+                                <h4 className="text-sm sm:text-base font-bold text-zinc-950">
+                                  {item.quote_badge || item.name}
+                                </h4>
                               </div>
-                            )}
-                            <div className="text-base sm:text-lg font-bold text-zinc-950">
-                              {item.price}&nbsp;₴
+                              {item.description && (
+                                <p className="text-xs sm:text-sm text-zinc-600 mt-1 pl-4">
+                                  {item.description}
+                                </p>
+                              )}
+                            </div>
+                            <div className="text-right shrink-0">
+                              {item.weight && (
+                                <div className="text-xs text-zinc-400 font-mono">
+                                  {item.weight}
+                                </div>
+                              )}
+                              <div className="text-base sm:text-lg font-bold text-zinc-950">
+                                {item.price}&nbsp;₴
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      ))}
+                        ))}
+                      </div>
                     </div>
                   </div>
                 );
@@ -1010,39 +1020,41 @@ export default function RestaurantClient({ initialData }: Props) {
                 <div
                   key={category.slug}
                   id={`cat-${category.slug}`}
-                  className="scroll-mt-28"
+                  className="scroll-mt-28 w-full"
                 >
-                  {/* Category Banner: Full-width on mobile (-mx-3), rounded-2xl on tablet/desktop */}
+                  {/* Category Banner: 100% full width edge-to-edge on mobile, rounded-3xl on tablet/desktop */}
                   {category.banner_image ? (
-                    <div className="relative h-44 sm:h-56 md:h-64 w-full -mx-3 sm:mx-0 sm:rounded-2xl overflow-hidden mb-8 shadow-sm border border-zinc-200/60 group">
-                      <img
-                        src={category.banner_image}
-                        alt={category.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition duration-700"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
-                      <div className="absolute bottom-4 left-4 sm:bottom-6 sm:left-6 right-4 text-white">
-                        <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-black/40 backdrop-blur-md text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-amber-300 font-semibold border border-white/10 mb-1.5">
-                          {category.culinary_group === "crimea"
-                            ? "🌙 Кримська традиція"
-                            : category.culinary_group === "grill"
-                            ? "🔥 Мангал & Хоспер"
-                            : category.culinary_group === "bar"
-                            ? "🍸 Барна карта"
-                            : "🏛️ Італійська традиція"}
-                        </span>
-                        <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold tracking-wide uppercase text-white drop-shadow">
-                          {category.name}
-                        </h3>
-                        {category.subtitle && (
-                          <p className="text-xs sm:text-sm text-stone-200 font-serif italic mt-0.5 drop-shadow">
-                            {category.subtitle}
-                          </p>
-                        )}
+                    <div className="w-full sm:max-w-7xl sm:mx-auto sm:px-6 mb-8">
+                      <div className="relative h-48 sm:h-60 md:h-72 w-full sm:rounded-3xl overflow-hidden shadow-sm group">
+                        <img
+                          src={category.banner_image}
+                          alt={category.name}
+                          className="w-full h-full object-cover group-hover:scale-105 transition duration-700"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-transparent" />
+                        <div className="absolute bottom-4 left-4 right-4 sm:bottom-6 sm:left-6 text-white">
+                          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/40 backdrop-blur-md text-[10px] sm:text-[11px] uppercase tracking-[0.2em] text-amber-300 font-semibold border border-white/10 mb-2">
+                            {category.culinary_group === "crimea"
+                              ? "🌙 Кримська традиція"
+                              : category.culinary_group === "grill"
+                              ? "🔥 Мангал & Хоспер"
+                              : category.culinary_group === "bar"
+                              ? "🍸 Барна карта"
+                              : "🏛️ Італійська традиція"}
+                          </span>
+                          <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold tracking-wide uppercase text-white drop-shadow">
+                            {category.name}
+                          </h3>
+                          {category.subtitle && (
+                            <p className="text-xs sm:text-sm text-stone-200 font-serif italic mt-0.5 drop-shadow">
+                              {category.subtitle}
+                            </p>
+                          )}
+                        </div>
                       </div>
                     </div>
                   ) : (
-                    <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 pb-4 mb-6 border-b border-zinc-200">
+                    <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-4 mb-6 border-b border-zinc-200">
                       <div>
                         <span className="text-xs uppercase tracking-[0.25em] text-amber-700 font-semibold block mb-1">
                           {category.culinary_group === "crimea"
@@ -1065,84 +1077,86 @@ export default function RestaurantClient({ initialData }: Props) {
                     </div>
                   )}
 
-                  {/* Two-Column Open Luxury Menu Layout (No Box Frames) */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-6">
-                    {items.map((item) => (
-                      <div
-                        key={item.id}
-                        className="flex items-start gap-3.5 group pb-4 border-b border-zinc-200/60 hover:border-zinc-300 transition"
-                      >
-                        {/* Dish Photo Thumbnail */}
-                        {item.image_url && (
-                          <button
-                            onClick={() =>
-                              setLightboxImage({
-                                url: item.image_url,
-                                title: item.name,
-                                subtitle: `${item.weight ? item.weight + " • " : ""}${item.price} ₴ — ${item.description}`,
-                              })
-                            }
-                            className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-lg overflow-hidden border border-zinc-200/80 bg-zinc-100 relative group/img shadow-xs"
-                            title="Натисніть, щоб збільшити фото страви"
-                          >
-                            <img
-                              src={item.image_url}
-                              alt={item.name}
-                              className="w-full h-full object-cover group-hover/img:scale-110 transition duration-500"
-                            />
-                            <span className="absolute inset-0 bg-black/0 group-hover/img:bg-black/25 transition flex items-center justify-center">
-                              <Eye className="w-4 h-4 text-white opacity-0 group-hover/img:opacity-100 transition" />
-                            </span>
-                          </button>
-                        )}
-
-                        {/* Dish Text & Price */}
-                        <div className="flex-1 min-w-0">
-                          <div className="flex items-baseline justify-between gap-2">
-                            <div className="flex items-center gap-1.5 flex-wrap">
-                              {item.is_spicy && (
-                                <span
-                                  title="Пікантна / гостра страва"
-                                  className="inline-flex items-center text-rose-600"
-                                >
-                                  <Flame className="w-3.5 h-3.5 fill-rose-500 text-rose-600 shrink-0" />
-                                </span>
-                              )}
-                              <h4 className="text-sm sm:text-base font-bold text-zinc-950 tracking-tight group-hover:text-amber-800 transition">
-                                {item.name}
-                              </h4>
-                              {item.weight && (
-                                <span className="text-xs font-normal text-zinc-400 whitespace-nowrap">
-                                  ({item.weight})
-                                </span>
-                              )}
-                              {item.is_popular && (
-                                <span className="px-1.5 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-amber-500/15 text-amber-900 border border-amber-300/60">
-                                  ХІТ
-                                </span>
-                              )}
-                            </div>
-
-                            {/* Dotted Leader Line */}
-                            <div className="flex-1 border-b border-dotted border-zinc-300 mx-2 min-w-[16px] hidden sm:block" />
-
-                            {/* Price */}
-                            <div className="text-base sm:text-lg font-bold text-zinc-950 whitespace-nowrap shrink-0 text-right">
-                              {item.price}&nbsp;
-                              <span className="text-xs font-normal text-zinc-500">
-                                ₴
+                  {/* Two-Column Open Luxury Menu Layout */}
+                  <div className="max-w-7xl mx-auto px-4 sm:px-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-6">
+                      {items.map((item) => (
+                        <div
+                          key={item.id}
+                          className="flex items-start gap-3.5 group pb-4 border-b border-zinc-200/60 hover:border-zinc-300 transition"
+                        >
+                          {/* Dish Photo Thumbnail */}
+                          {item.image_url && (
+                            <button
+                              onClick={() =>
+                                setLightboxImage({
+                                  url: item.image_url,
+                                  title: item.name,
+                                  subtitle: `${item.weight ? item.weight + " • " : ""}${item.price} ₴ — ${item.description}`,
+                                })
+                              }
+                              className="w-16 h-16 sm:w-20 sm:h-20 shrink-0 rounded-2xl overflow-hidden border border-zinc-200/80 bg-zinc-100 relative group/img shadow-xs"
+                              title="Натисніть, щоб збільшити фото страви"
+                            >
+                              <img
+                                src={item.image_url}
+                                alt={item.name}
+                                className="w-full h-full object-cover group-hover/img:scale-110 transition duration-500"
+                              />
+                              <span className="absolute inset-0 bg-black/0 group-hover/img:bg-black/25 transition flex items-center justify-center">
+                                <Eye className="w-4 h-4 text-white opacity-0 group-hover/img:opacity-100 transition" />
                               </span>
-                            </div>
-                          </div>
-
-                          {item.description && (
-                            <p className="text-xs sm:text-[13px] text-zinc-600 mt-1 leading-relaxed">
-                              {item.description}
-                            </p>
+                            </button>
                           )}
+
+                          {/* Dish Text & Price */}
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-baseline justify-between gap-2">
+                              <div className="flex items-center gap-1.5 flex-wrap">
+                                {item.is_spicy && (
+                                  <span
+                                    title="Пікантна / гостра страва"
+                                    className="inline-flex items-center text-rose-600"
+                                  >
+                                    <Flame className="w-3.5 h-3.5 fill-rose-500 text-rose-600 shrink-0" />
+                                  </span>
+                                )}
+                                <h4 className="text-sm sm:text-base font-bold text-zinc-950 tracking-tight group-hover:text-amber-800 transition">
+                                  {item.name}
+                                </h4>
+                                {item.weight && (
+                                  <span className="text-xs font-normal text-zinc-400 whitespace-nowrap">
+                                    ({item.weight})
+                                  </span>
+                                )}
+                                {item.is_popular && (
+                                  <span className="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-500/15 text-amber-900 border border-amber-300/60">
+                                    ХІТ
+                                  </span>
+                                )}
+                              </div>
+
+                              {/* Dotted Leader Line */}
+                              <div className="flex-1 border-b border-dotted border-zinc-300 mx-2 min-w-[16px] hidden sm:block" />
+
+                              {/* Price */}
+                              <div className="text-base sm:text-lg font-bold text-zinc-950 whitespace-nowrap shrink-0 text-right">
+                                {item.price}&nbsp;
+                                <span className="text-xs font-normal text-zinc-500">
+                                  ₴
+                                </span>
+                              </div>
+                            </div>
+
+                            {item.description && (
+                              <p className="text-xs sm:text-[13px] text-zinc-600 mt-1 leading-relaxed">
+                                {item.description}
+                              </p>
+                            )}
+                          </div>
                         </div>
-                      </div>
-                    ))}
+                      ))}
+                    </div>
                   </div>
                 </div>
               );
@@ -1151,22 +1165,24 @@ export default function RestaurantClient({ initialData }: Props) {
         )}
 
         {/* Allergy Notice & Wi-Fi Password */}
-        <div className="mt-12 pt-8 border-t border-zinc-200 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <p className="text-xs sm:text-sm text-zinc-600 italic">
-            {settings.allergy_notice ||
-              "* Якщо у вас є алергія на певні продукти — повідомте, будь ласка, офіціанта"}
-          </p>
-          <div className="flex flex-wrap items-center gap-3">
-            <span className="text-xs font-mono uppercase tracking-widest bg-white px-3 py-1.5 border border-zinc-200/80 rounded shadow-xs">
-              <strong>WI-FI:</strong> {settings.wifi_password || "krymirome"}
-            </span>
-            <a
-              href="/menu.pdf"
-              target="_blank"
-              className="text-xs font-bold uppercase tracking-wider underline hover:text-amber-700 whitespace-nowrap"
-            >
-              Завантажити PDF-меню
-            </a>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 mt-12 pt-8 border-t border-zinc-200">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+            <p className="text-xs sm:text-sm text-zinc-600 italic">
+              {settings.allergy_notice ||
+                "* Якщо у вас є алергія на певні продукти — повідомте, будь ласка, офіціанта"}
+            </p>
+            <div className="flex flex-wrap items-center gap-3">
+              <span className="text-xs font-mono uppercase tracking-widest bg-white px-4 py-2 border border-zinc-200/80 rounded-full shadow-xs">
+                <strong>WI-FI:</strong> {settings.wifi_password || "krymirome"}
+              </span>
+              <a
+                href="/menu.pdf"
+                target="_blank"
+                className="text-xs font-bold uppercase tracking-wider px-5 py-2.5 rounded-full bg-zinc-950 text-white hover:bg-amber-700 transition shadow-sm whitespace-nowrap"
+              >
+                Завантажити PDF-меню
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -1195,9 +1211,9 @@ export default function RestaurantClient({ initialData }: Props) {
                 <button
                   key={tab.id}
                   onClick={() => setGalleryTab(tab.id)}
-                  className={`px-4 py-2 text-xs font-bold uppercase tracking-widest border transition ${
+                  className={`px-4 py-2 text-xs font-bold uppercase tracking-wider rounded-full border transition ${
                     galleryTab === tab.id
-                      ? "bg-white text-zinc-950 border-white"
+                      ? "bg-white text-zinc-950 border-white shadow-sm"
                       : "bg-transparent text-stone-300 border-zinc-700 hover:border-stone-400"
                   }`}
                 >
@@ -1217,7 +1233,7 @@ export default function RestaurantClient({ initialData }: Props) {
                     title: photo.title,
                   })
                 }
-                className={`group relative overflow-hidden bg-zinc-900 border border-zinc-800 cursor-pointer ${
+                className={`group relative overflow-hidden bg-zinc-900 border border-zinc-800 cursor-pointer rounded-3xl ${
                   index === 0 && galleryTab === "all"
                     ? "sm:col-span-2 sm:row-span-2 aspect-[16/10] sm:aspect-auto"
                     : "aspect-[4/3]"
@@ -1262,7 +1278,7 @@ export default function RestaurantClient({ initialData }: Props) {
             </div>
 
             {/* Google Rating Summary Box */}
-            <div className="flex flex-wrap items-center gap-5 bg-zinc-50 p-4 sm:px-6 border border-zinc-200 shadow-sm">
+            <div className="flex flex-wrap items-center gap-5 bg-zinc-50 p-5 sm:px-7 border border-zinc-200 shadow-sm rounded-3xl">
               <div className="flex items-center gap-3">
                 <div className="text-3xl sm:text-4xl font-extrabold text-zinc-950">
                   {settings.google_rating || "4.8"}
@@ -1284,7 +1300,7 @@ export default function RestaurantClient({ initialData }: Props) {
                   href={googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-zinc-950 text-white text-xs font-bold uppercase tracking-wider hover:bg-amber-700 transition"
+                  className="inline-flex items-center gap-1.5 px-6 py-2.5 rounded-full bg-zinc-950 text-white text-xs font-bold uppercase tracking-wider hover:bg-amber-700 transition shadow-sm"
                 >
                   <span>Всі відгуки на Картах</span>
                   <ExternalLink className="w-3.5 h-3.5" />
@@ -1302,11 +1318,11 @@ export default function RestaurantClient({ initialData }: Props) {
                 <span>Свайпайте відгуки вправо/вліво</span>
                 <span>👉</span>
               </span>
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-2">
                 <button
                   type="button"
                   onClick={() => scrollReviews("left")}
-                  className="p-1.5 bg-white border border-stone-300 text-zinc-700 active:bg-stone-100 shadow-sm"
+                  className="p-2 rounded-full bg-white border border-zinc-200 text-zinc-700 active:bg-zinc-100 shadow-sm transition"
                   aria-label="Попередній відгук"
                 >
                   <ChevronLeft className="w-4 h-4" />
@@ -1314,7 +1330,7 @@ export default function RestaurantClient({ initialData }: Props) {
                 <button
                   type="button"
                   onClick={() => scrollReviews("right")}
-                  className="p-1.5 bg-white border border-stone-300 text-zinc-700 active:bg-stone-100 shadow-sm"
+                  className="p-2 rounded-full bg-white border border-zinc-200 text-zinc-700 active:bg-zinc-100 shadow-sm transition"
                   aria-label="Наступний відгук"
                 >
                   <ChevronRight className="w-4 h-4" />
@@ -1329,7 +1345,7 @@ export default function RestaurantClient({ initialData }: Props) {
               {reviews.map((rev) => (
                 <div
                   key={rev.id}
-                  className="w-[84vw] max-w-[340px] md:w-auto shrink-0 snap-start bg-zinc-50 border border-zinc-200/90 p-5 sm:p-6 flex flex-col justify-between hover:shadow-md transition shadow-xs"
+                  className="w-[84vw] max-w-[340px] md:w-auto shrink-0 snap-start bg-zinc-50 border border-zinc-200/90 p-5 sm:p-6 flex flex-col justify-between hover:shadow-md transition shadow-xs rounded-3xl"
                 >
                   <div>
                     <div className="flex items-center justify-between gap-3 mb-4">
@@ -1403,12 +1419,12 @@ export default function RestaurantClient({ initialData }: Props) {
         <div className="max-w-7xl mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
             {/* Left Info Box */}
-            <div className="lg:col-span-5 bg-white border border-zinc-200 p-6 sm:p-8 flex flex-col justify-between space-y-6 shadow-sm">
+            <div className="lg:col-span-5 bg-white border border-zinc-200 p-6 sm:p-8 flex flex-col justify-between space-y-6 shadow-sm rounded-3xl">
               <div className="space-y-6">
                 <div className="flex items-center gap-4">
                   <LogoDiamond size="sm" />
                   <div>
-                    <h2 className="text-2xl font-bold uppercase tracking-wider text-zinc-950">
+                    <h2 className="text-2xl font-bold uppercase tracking-wider text-zinc-950 font-serif">
                       Чекаємо в гості
                     </h2>
                     <p className="text-xs text-zinc-500 uppercase tracking-widest">
@@ -1469,8 +1485,8 @@ export default function RestaurantClient({ initialData }: Props) {
                   </div>
                 </div>
 
-                {/* Sister Venues from PDF Page 16 ("НАШІ ЗАКЛАДИ:") */}
-                <div className="pt-4 border-t border-stone-200">
+                {/* Sister Venues */}
+                <div className="pt-4 border-t border-zinc-200">
                   <div className="text-xs font-extrabold uppercase tracking-[0.2em] text-zinc-900 mb-3">
                     Наші заклади в Instagram:
                   </div>
@@ -1485,7 +1501,7 @@ export default function RestaurantClient({ initialData }: Props) {
                         href={`https://www.instagram.com/${handle.replace("@", "")}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-stone-100 hover:bg-zinc-900 hover:text-white text-xs font-bold uppercase tracking-wider transition border border-stone-200"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-zinc-100 hover:bg-zinc-900 hover:text-white text-xs font-bold uppercase tracking-wider transition border border-zinc-200 shadow-xs"
                       >
                         <Instagram className="w-3.5 h-3.5 text-pink-600" />
                         <span>{handle.toUpperCase()}</span>
@@ -1500,14 +1516,14 @@ export default function RestaurantClient({ initialData }: Props) {
                   setBookingSuccess(false);
                   setBookingModalOpen(true);
                 }}
-                className="w-full py-4 bg-zinc-950 text-white text-xs font-bold uppercase tracking-[0.2em] hover:bg-amber-700 transition"
+                className="w-full py-4 rounded-full bg-zinc-950 text-white text-xs font-bold uppercase tracking-[0.2em] hover:bg-amber-700 transition shadow-md"
               >
                 Забронювати столик онлайн
               </button>
             </div>
 
             {/* Right Interactive Google Map */}
-            <div className="lg:col-span-7 bg-stone-200 border border-stone-300 min-h-[380px] relative overflow-hidden group">
+            <div className="lg:col-span-7 bg-stone-200 border border-zinc-200 min-h-[380px] relative overflow-hidden group rounded-3xl shadow-sm">
               <iframe
                 title="Карта Ресторан Крим та Рим"
                 src="https://www.google.com/maps?q=50.406378,30.656502&hl=uk&z=16&output=embed"
@@ -1520,7 +1536,7 @@ export default function RestaurantClient({ initialData }: Props) {
                   href={googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-3.5 py-2 bg-zinc-950/90 hover:bg-zinc-950 text-white text-xs font-bold uppercase tracking-wider shadow-lg backdrop-blur-sm transition"
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-950/90 hover:bg-zinc-950 text-white text-xs font-bold uppercase tracking-wider shadow-lg backdrop-blur-sm transition"
                 >
                   <MapPin className="w-3.5 h-3.5 text-amber-400" />
                   <span>Відкрити у Google Maps ↗</span>
@@ -1557,16 +1573,16 @@ export default function RestaurantClient({ initialData }: Props) {
               </p>
 
               <div className="flex flex-wrap gap-2 pt-1">
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-zinc-900 border border-zinc-800 text-[11px] text-amber-300">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-[11px] text-amber-300">
                   <Flame className="w-3 h-3 text-amber-500" /> Дров&apos;яна піч
                 </span>
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-zinc-900 border border-zinc-800 text-[11px] text-stone-300">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-[11px] text-stone-300">
                   Мангал &amp; Хоспер
                 </span>
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-zinc-900 border border-zinc-800 text-[11px] text-emerald-300">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-[11px] text-emerald-300">
                   <Zap className="w-3 h-3" /> Генератор
                 </span>
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-zinc-900 border border-zinc-800 text-[11px] text-amber-200">
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-zinc-900 border border-zinc-800 text-[11px] text-amber-200">
                   <PawPrint className="w-3 h-3" /> Pet-friendly
                 </span>
               </div>
@@ -1729,7 +1745,7 @@ export default function RestaurantClient({ initialData }: Props) {
                         href={`https://www.instagram.com/${item.handle.replace("@", "")}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-1 px-2.5 py-1 bg-zinc-900 hover:bg-zinc-800 text-[11px] font-bold text-stone-300 hover:text-white transition border border-zinc-800"
+                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-zinc-900 hover:bg-zinc-800 text-[11px] font-bold text-stone-300 hover:text-white transition border border-zinc-800 shadow-xs"
                       >
                         <Instagram className="w-3 h-3 text-pink-500" />
                         <span>{item.label}</span>
@@ -1799,12 +1815,12 @@ export default function RestaurantClient({ initialData }: Props) {
           onClick={() => setLightboxImage(null)}
         >
           <div
-            className="relative max-w-3xl w-full bg-zinc-950 border border-zinc-800 overflow-hidden shadow-2xl"
+            className="relative max-w-3xl w-full bg-zinc-950 border border-zinc-800 overflow-hidden shadow-2xl rounded-3xl"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setLightboxImage(null)}
-              className="absolute top-3 right-3 z-10 p-2 bg-black/70 text-white hover:bg-black"
+              className="absolute top-3 right-3 z-10 p-2.5 rounded-full bg-black/70 text-white hover:bg-black transition"
             >
               <X className="w-5 h-5" />
             </button>
@@ -1814,7 +1830,7 @@ export default function RestaurantClient({ initialData }: Props) {
               className="w-full max-h-[75vh] object-contain bg-black"
             />
             <div className="p-4 text-white">
-              <h4 className="text-base font-bold uppercase tracking-wider">
+              <h4 className="text-base font-bold uppercase tracking-wider font-serif">
                 {lightboxImage.title}
               </h4>
               {lightboxImage.subtitle && (
@@ -1834,12 +1850,12 @@ export default function RestaurantClient({ initialData }: Props) {
           onClick={() => setBookingModalOpen(false)}
         >
           <div
-            className="bg-white border-2 border-zinc-950 max-w-lg w-full p-5 sm:p-8 relative shadow-2xl my-auto max-h-[92dvh] overflow-y-auto overscroll-contain"
+            className="bg-white border border-zinc-200 max-w-lg w-full p-6 sm:p-8 relative shadow-2xl my-auto max-h-[92dvh] overflow-y-auto overscroll-contain rounded-3xl"
             onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={() => setBookingModalOpen(false)}
-              className="absolute top-4 right-4 p-2 text-zinc-500 hover:text-zinc-950"
+              className="absolute top-4 right-4 p-2.5 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-500 hover:text-zinc-950 transition"
             >
               <X className="w-5 h-5" />
             </button>
@@ -1847,7 +1863,7 @@ export default function RestaurantClient({ initialData }: Props) {
             <div className="flex items-center gap-3 mb-6">
               <LogoDiamond size="sm" />
               <div>
-                <h3 className="text-xl font-bold uppercase tracking-wider text-zinc-950">
+                <h3 className="text-xl font-bold uppercase tracking-wider text-zinc-950 font-serif">
                   Бронювання столика
                 </h3>
                 <p className="text-xs text-zinc-500">
@@ -1861,7 +1877,7 @@ export default function RestaurantClient({ initialData }: Props) {
                 <div className="w-14 h-14 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center mx-auto">
                   <Check className="w-7 h-7" />
                 </div>
-                <h4 className="text-lg font-bold uppercase tracking-wider">
+                <h4 className="text-lg font-bold uppercase tracking-wider font-serif">
                   Заявку прийнято!
                 </h4>
                 <p className="text-sm text-zinc-600">
@@ -1875,7 +1891,7 @@ export default function RestaurantClient({ initialData }: Props) {
                 </p>
                 <button
                   onClick={() => setBookingModalOpen(false)}
-                  className="px-6 py-3 bg-zinc-950 text-white text-xs font-bold uppercase tracking-widest"
+                  className="px-8 py-3 rounded-full bg-zinc-950 text-white text-xs font-bold uppercase tracking-widest hover:bg-amber-700 transition shadow-sm"
                 >
                   Чудово
                 </button>
@@ -1883,7 +1899,7 @@ export default function RestaurantClient({ initialData }: Props) {
             ) : (
               <form onSubmit={handleBookingSubmit} className="space-y-4">
                 {bookingError && (
-                  <div className="p-3 bg-red-50 border border-red-200 text-xs text-red-700">
+                  <div className="p-3.5 rounded-xl bg-red-50 border border-red-200 text-xs text-red-700">
                     {bookingError}
                   </div>
                 )}
@@ -1901,7 +1917,7 @@ export default function RestaurantClient({ initialData }: Props) {
                         setBookingForm({ ...bookingForm, customer_name: e.target.value })
                       }
                       placeholder="Олександр"
-                      className="w-full px-3.5 py-2.5 border border-stone-300 text-base md:text-sm focus:outline-none focus:border-zinc-950"
+                      className="w-full px-4 py-2.5 rounded-xl border border-zinc-300 text-base md:text-sm focus:outline-none focus:border-zinc-950 shadow-xs"
                     />
                   </div>
                   <div>
@@ -1916,7 +1932,7 @@ export default function RestaurantClient({ initialData }: Props) {
                         setBookingForm({ ...bookingForm, customer_phone: e.target.value })
                       }
                       placeholder="+380 (93) 000-00-00"
-                      className="w-full px-3.5 py-2.5 border border-stone-300 text-base md:text-sm focus:outline-none focus:border-zinc-950"
+                      className="w-full px-4 py-2.5 rounded-xl border border-zinc-300 text-base md:text-sm focus:outline-none focus:border-zinc-950 shadow-xs"
                     />
                   </div>
                 </div>
@@ -1936,7 +1952,7 @@ export default function RestaurantClient({ initialData }: Props) {
                           reservation_date: e.target.value,
                         })
                       }
-                      className="w-full px-3 py-2.5 border border-stone-300 text-base md:text-sm focus:outline-none focus:border-zinc-950"
+                      className="w-full px-3 py-2.5 rounded-xl border border-zinc-300 text-base md:text-sm focus:outline-none focus:border-zinc-950 shadow-xs"
                     />
                   </div>
                   <div>
@@ -1953,7 +1969,7 @@ export default function RestaurantClient({ initialData }: Props) {
                           reservation_time: e.target.value,
                         })
                       }
-                      className="w-full px-3 py-2.5 border border-stone-300 text-base md:text-sm focus:outline-none focus:border-zinc-950"
+                      className="w-full px-3 py-2.5 rounded-xl border border-zinc-300 text-base md:text-sm focus:outline-none focus:border-zinc-950 shadow-xs"
                     />
                   </div>
                   <div>
@@ -1968,7 +1984,7 @@ export default function RestaurantClient({ initialData }: Props) {
                           guests_count: Number(e.target.value),
                         })
                       }
-                      className="w-full px-3 py-2.5 border border-stone-300 text-base md:text-sm bg-white focus:outline-none focus:border-zinc-950"
+                      className="w-full px-3 py-2.5 rounded-xl border border-zinc-300 text-base md:text-sm bg-white focus:outline-none focus:border-zinc-950 shadow-xs"
                     >
                       {[1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 15].map((n) => (
                         <option key={n} value={n}>
@@ -1995,10 +2011,10 @@ export default function RestaurantClient({ initialData }: Props) {
                         onClick={() =>
                           setBookingForm({ ...bookingForm, hall_preference: h.id })
                         }
-                        className={`py-2 px-2 text-xs font-bold uppercase border transition ${
+                        className={`py-2 px-2 text-xs font-bold uppercase rounded-full border transition ${
                           bookingForm.hall_preference === h.id
-                            ? "bg-zinc-950 text-white border-zinc-950"
-                            : "bg-stone-50 text-zinc-700 border-stone-300"
+                            ? "bg-zinc-950 text-white border-zinc-950 shadow-sm"
+                            : "bg-zinc-100 text-zinc-700 border-zinc-200 hover:bg-zinc-200"
                         }`}
                       >
                         {h.label}
@@ -2018,14 +2034,14 @@ export default function RestaurantClient({ initialData }: Props) {
                       setBookingForm({ ...bookingForm, comment: e.target.value })
                     }
                     placeholder="Наприклад: столик біля вікна, прийдемо з коргі 🐾"
-                    className="w-full px-3.5 py-2 border border-stone-300 text-base md:text-sm focus:outline-none focus:border-zinc-950"
+                    className="w-full px-4 py-2 rounded-xl border border-zinc-300 text-base md:text-sm focus:outline-none focus:border-zinc-950 shadow-xs"
                   />
                 </div>
 
                 <button
                   type="submit"
                   disabled={bookingSubmitting}
-                  className="w-full py-3.5 bg-zinc-950 text-white text-xs font-bold uppercase tracking-[0.2em] hover:bg-amber-700 transition disabled:opacity-50"
+                  className="w-full py-4 rounded-full bg-zinc-950 text-white text-xs font-bold uppercase tracking-[0.2em] hover:bg-amber-700 transition shadow-md disabled:opacity-50"
                 >
                   {bookingSubmitting ? "Відправка..." : "Підтвердити бронювання"}
                 </button>
