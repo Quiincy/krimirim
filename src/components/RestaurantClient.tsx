@@ -22,6 +22,7 @@ import {
   X,
   Check,
   ChevronRight,
+  ChevronLeft,
   Settings,
   Menu as MenuIcon,
   Eye,
@@ -199,6 +200,17 @@ export default function RestaurantClient({ initialData }: Props) {
     }
   };
 
+  const reviewsScrollRef = React.useRef<HTMLDivElement>(null);
+  const scrollReviews = (direction: "left" | "right") => {
+    if (reviewsScrollRef.current) {
+      const amount = reviewsScrollRef.current.clientWidth * 0.85;
+      reviewsScrollRef.current.scrollBy({
+        left: direction === "left" ? -amount : amount,
+        behavior: "smooth",
+      });
+    }
+  };
+
   const googleMapsUrl =
     settings.google_maps_url ||
     "https://maps.app.goo.gl/GR3u8QYa7ntYbPoa9";
@@ -206,28 +218,90 @@ export default function RestaurantClient({ initialData }: Props) {
   return (
     <div className="min-h-screen bg-[#F7F5F0] text-zinc-900 flex flex-col pb-16 md:pb-0 overflow-x-hidden w-full max-w-full">
       {/* ================= TOP PROMO & INFO STRIP ================= */}
-      <div className="bg-zinc-950 text-stone-200 text-xs border-b border-zinc-800">
-        <div className="max-w-7xl mx-auto px-4 py-2 flex flex-wrap items-center justify-between gap-2">
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar whitespace-nowrap">
+      <div className="bg-zinc-950 text-stone-200 text-xs border-b border-zinc-800 overflow-hidden select-none">
+        {/* Mobile: Infinite Loop Ticker in One Line */}
+        <div className="md:hidden py-2.5 overflow-hidden relative">
+          <div className="animate-marquee flex items-center gap-5 whitespace-nowrap">
+            {[0, 1].map((copyIdx) => (
+              <React.Fragment key={copyIdx}>
+                <span className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-medium text-[11px]">
+                  <Sparkles className="w-3.5 h-3.5" />
+                  Будні 11:00–15:00: -20% на кухню
+                </span>
+                <span className="text-zinc-700">•</span>
+                <span className="inline-flex items-center gap-1.5 text-stone-300 text-[11px]">
+                  🍕 Піца з собою: -15%
+                </span>
+                <span className="text-zinc-700">•</span>
+                <span className="inline-flex items-center gap-1.5 text-emerald-300 text-[11px]">
+                  <Zap className="w-3.5 h-3.5" /> Світло є • Генератор
+                </span>
+                <span className="text-zinc-700">•</span>
+                <span className="inline-flex items-center gap-1.5 text-amber-200 text-[11px]">
+                  <PawPrint className="w-3.5 h-3.5" /> Pet-friendly
+                </span>
+                <span className="text-zinc-700">•</span>
+                <button
+                  type="button"
+                  onClick={handleCopyWifi}
+                  className="inline-flex items-center gap-1.5 text-stone-200 text-[11px] hover:text-white"
+                >
+                  <Wifi className="w-3.5 h-3.5 text-amber-400" />
+                  <span>
+                    Wi-Fi:{" "}
+                    <strong className="font-mono text-white underline">
+                      {wifiCopied
+                        ? "Скопійовано!"
+                        : settings.wifi_password || "krymirome"}
+                    </strong>
+                  </span>
+                </button>
+                <span className="text-zinc-700">•</span>
+                <a
+                  href={googleMapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-stone-300 text-[11px] hover:text-white"
+                >
+                  <MapPin className="w-3.5 h-3.5 text-amber-400" />
+                  вул. Братства Тарасівців, 3
+                </a>
+                <span className="text-zinc-700">•</span>
+                <a
+                  href={`tel:${(settings.phone || "+380931090103").replace(/[^\d+]/g, "")}`}
+                  className="inline-flex items-center gap-1.5 text-amber-400 text-[11px]"
+                >
+                  <Phone className="w-3.5 h-3.5" />
+                  {settings.phone || "+380 (93) 109-01-03"}
+                </a>
+                <span className="text-zinc-700 mr-2">•</span>
+              </React.Fragment>
+            ))}
+          </div>
+        </div>
+
+        {/* Desktop: Clean Single Line Bar */}
+        <div className="hidden md:flex max-w-7xl mx-auto px-4 py-2 items-center justify-between gap-4">
+          <div className="flex items-center gap-3 overflow-x-auto no-scrollbar whitespace-nowrap">
             <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 font-medium">
               <Sparkles className="w-3.5 h-3.5" />
               Будні 11:00–15:00: -20% на кухню
             </span>
-            <span className="hidden sm:inline text-zinc-600">•</span>
-            <span className="hidden sm:inline-flex items-center gap-1 text-stone-300">
+            <span className="text-zinc-700">•</span>
+            <span className="inline-flex items-center gap-1 text-stone-300">
               🍕 Піца з собою -15%
             </span>
-            <span className="hidden lg:inline text-zinc-600">•</span>
-            <span className="hidden lg:inline-flex items-center gap-1 text-emerald-300">
+            <span className="text-zinc-700">•</span>
+            <span className="inline-flex items-center gap-1 text-emerald-300">
               <Zap className="w-3.5 h-3.5" /> Працюємо зі світлом та генератором
             </span>
-            <span className="hidden lg:inline text-zinc-600">•</span>
-            <span className="hidden lg:inline-flex items-center gap-1 text-amber-200">
+            <span className="text-zinc-700">•</span>
+            <span className="inline-flex items-center gap-1 text-amber-200">
               <PawPrint className="w-3.5 h-3.5" /> Pet-friendly
             </span>
           </div>
 
-          <div className="flex items-center gap-4 ml-auto">
+          <div className="flex items-center gap-5 shrink-0">
             <button
               onClick={handleCopyWifi}
               className="inline-flex items-center gap-1.5 text-stone-300 hover:text-white transition"
@@ -237,13 +311,15 @@ export default function RestaurantClient({ initialData }: Props) {
               <span>
                 Wi-Fi:{" "}
                 <strong className="font-mono tracking-wider text-white">
-                  {wifiCopied ? "Скопійовано!" : settings.wifi_password || "krymirome"}
+                  {wifiCopied
+                    ? "Скопійовано!"
+                    : settings.wifi_password || "krymirome"}
                 </strong>
               </span>
             </button>
             <a
               href={`tel:${(settings.phone || "+380931090103").replace(/[^\d+]/g, "")}`}
-              className="hidden sm:inline-flex items-center gap-1.5 text-amber-400 hover:text-amber-300 font-medium"
+              className="inline-flex items-center gap-1.5 text-amber-400 hover:text-amber-300 font-medium"
             >
               <Phone className="w-3.5 h-3.5" />
               {settings.phone || "+380 (93) 109-01-03"}
@@ -1229,74 +1305,107 @@ export default function RestaurantClient({ initialData }: Props) {
             </div>
           </div>
 
-          {/* Reviews Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-            {reviews.map((rev) => (
-              <div
-                key={rev.id}
-                className="bg-[#F8F6F1] border border-stone-200 p-6 flex flex-col justify-between hover:shadow-md transition"
-              >
-                <div>
-                  <div className="flex items-center justify-between gap-3 mb-4">
-                    <div className="flex items-center gap-3">
-                      {rev.author_avatar && rev.author_avatar.startsWith("http") ? (
-                        <img
-                          src={rev.author_avatar}
-                          alt={rev.author_name}
-                          className="w-10 h-10 rounded-full object-cover"
-                        />
-                      ) : (
-                        <div className="w-10 h-10 rounded-full bg-zinc-900 text-white flex items-center justify-center font-bold text-xs">
-                          {rev.author_avatar || rev.author_name.slice(0, 2).toUpperCase()}
+          {/* Reviews Carousel: Horizontal Swipe on Mobile, Responsive Grid on Desktop */}
+          <div className="relative mt-8">
+            {/* Mobile swipe navigation bar */}
+            <div className="flex md:hidden items-center justify-between gap-2 mb-3 px-1">
+              <span className="text-xs text-zinc-500 font-medium inline-flex items-center gap-1.5">
+                <span>👈</span>
+                <span>Свайпайте відгуки вправо/вліво</span>
+                <span>👉</span>
+              </span>
+              <div className="flex items-center gap-1.5">
+                <button
+                  type="button"
+                  onClick={() => scrollReviews("left")}
+                  className="p-1.5 bg-white border border-stone-300 text-zinc-700 active:bg-stone-100 shadow-sm"
+                  aria-label="Попередній відгук"
+                >
+                  <ChevronLeft className="w-4 h-4" />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => scrollReviews("right")}
+                  className="p-1.5 bg-white border border-stone-300 text-zinc-700 active:bg-stone-100 shadow-sm"
+                  aria-label="Наступний відгук"
+                >
+                  <ChevronRight className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
+
+            <div
+              ref={reviewsScrollRef}
+              className="flex md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 overflow-x-auto md:overflow-x-visible snap-x snap-mandatory no-scrollbar pb-3 -mx-4 px-4 sm:mx-0 sm:px-0"
+            >
+              {reviews.map((rev) => (
+                <div
+                  key={rev.id}
+                  className="w-[84vw] max-w-[340px] md:w-auto shrink-0 snap-start bg-[#F8F6F1] border border-stone-200 p-5 sm:p-6 flex flex-col justify-between hover:shadow-md transition"
+                >
+                  <div>
+                    <div className="flex items-center justify-between gap-3 mb-4">
+                      <div className="flex items-center gap-3">
+                        {rev.author_avatar && rev.author_avatar.startsWith("http") ? (
+                          <img
+                            src={rev.author_avatar}
+                            alt={rev.author_name}
+                            className="w-10 h-10 rounded-full object-cover shrink-0"
+                          />
+                        ) : (
+                          <div className="w-10 h-10 rounded-full bg-zinc-900 text-white flex items-center justify-center font-bold text-xs shrink-0">
+                            {rev.author_avatar ||
+                              rev.author_name.slice(0, 2).toUpperCase()}
+                          </div>
+                        )}
+                        <div className="min-w-0">
+                          <div className="text-sm font-bold text-zinc-950 truncate">
+                            {rev.author_name}
+                          </div>
+                          <div className="text-xs text-zinc-500">
+                            {rev.relative_time}
+                          </div>
                         </div>
-                      )}
-                      <div>
-                        <div className="text-sm font-bold text-zinc-950">
-                          {rev.author_name}
-                        </div>
-                        <div className="text-xs text-zinc-500">
-                          {rev.relative_time}
-                        </div>
+                      </div>
+
+                      {/* Google 'G' emblem */}
+                      <div
+                        className="text-xs font-bold px-2 py-1 bg-white border border-stone-200 text-zinc-600 flex items-center gap-1 shrink-0"
+                        title="Відгук з Google Maps"
+                      >
+                        <span className="text-blue-600 font-extrabold">G</span>
+                        <span>Maps</span>
                       </div>
                     </div>
 
-                    {/* Google 'G' emblem */}
-                    <div
-                      className="text-xs font-bold px-2 py-1 bg-white border border-stone-200 text-zinc-600 flex items-center gap-1"
-                      title="Відгук з Google Maps"
-                    >
-                      <span className="text-blue-600 font-extrabold">G</span>
-                      <span>Maps</span>
+                    <div className="flex items-center gap-0.5 mb-3">
+                      {Array.from({ length: rev.rating || 5 }).map((_, idx) => (
+                        <Star
+                          key={idx}
+                          className="w-3.5 h-3.5 fill-amber-400 text-amber-400"
+                        />
+                      ))}
                     </div>
+
+                    <p className="text-xs sm:text-sm text-zinc-700 leading-relaxed line-clamp-6 sm:line-clamp-none">
+                      «{rev.text}»
+                    </p>
                   </div>
 
-                  <div className="flex items-center gap-0.5 mb-3">
-                    {Array.from({ length: rev.rating || 5 }).map((_, idx) => (
-                      <Star
-                        key={idx}
-                        className="w-3.5 h-3.5 fill-amber-400 text-amber-400"
-                      />
-                    ))}
+                  <div className="mt-4 pt-3 border-t border-stone-200/70 flex items-center justify-between text-[11px] text-zinc-400">
+                    <span>Перевірений відгук</span>
+                    <a
+                      href={googleMapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:text-zinc-800 underline font-medium"
+                    >
+                      Google Карти ↗
+                    </a>
                   </div>
-
-                  <p className="text-sm text-zinc-700 leading-relaxed">
-                    «{rev.text}»
-                  </p>
                 </div>
-
-                <div className="mt-4 pt-3 border-t border-stone-200/70 flex items-center justify-between text-[11px] text-zinc-400">
-                  <span>Перевірений відгук гостя</span>
-                  <a
-                    href={googleMapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:text-zinc-800 underline"
-                  >
-                    Google Карти ↗
-                  </a>
-                </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -1434,39 +1543,235 @@ export default function RestaurantClient({ initialData }: Props) {
         </div>
       </section>
 
-      {/* ================= FOOTER ================= */}
-      <footer className="bg-zinc-950 text-stone-400 py-10 border-t border-zinc-800 text-xs">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-            <span className="font-bold text-white uppercase tracking-[0.2em]">
-              КРИМ &amp; РИМ
-            </span>
-            <span>•</span>
-            <a
-              href={googleMapsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition underline"
-            >
-              вул. Братства Тарасівців, 3, Київ ↗
-            </a>
+      {/* ================= EXPANDED RICH FOOTER ================= */}
+      <footer className="bg-zinc-950 text-stone-300 pt-14 pb-12 border-t border-zinc-800 text-xs">
+        <div className="max-w-7xl mx-auto px-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-10 pb-12 border-b border-zinc-800/80">
+            {/* Column 1: Brand & Identity (4 cols) */}
+            <div className="lg:col-span-4 space-y-4">
+              <div className="flex items-center gap-3">
+                <LogoDiamond size="sm" />
+                <div>
+                  <span className="text-base font-extrabold uppercase tracking-[0.25em] text-white block">
+                    КРИМ &amp; РИМ
+                  </span>
+                  <span className="text-[11px] text-zinc-400 uppercase tracking-widest">
+                    Ресторан кримськотатарської та італійської кухні
+                  </span>
+                </div>
+              </div>
+
+              <p className="text-stone-400 text-xs sm:text-[13px] leading-relaxed pr-2">
+                Дві великі гастрономічні культури під одним дахом у Києві на
+                Харківському масиві. Соковитий мангал, чебуреки, янтики та шурпа
+                поруч зі справжньою неаполітанською піцою з дров&apos;яної печі,
+                пастою та авторським баром.
+              </p>
+
+              <div className="flex flex-wrap gap-2 pt-1">
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-zinc-900 border border-zinc-800 text-[11px] text-amber-300">
+                  <Flame className="w-3 h-3 text-amber-500" /> Дров&apos;яна піч
+                </span>
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-zinc-900 border border-zinc-800 text-[11px] text-stone-300">
+                  Мангал &amp; Хоспер
+                </span>
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-zinc-900 border border-zinc-800 text-[11px] text-emerald-300">
+                  <Zap className="w-3 h-3" /> Генератор
+                </span>
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-zinc-900 border border-zinc-800 text-[11px] text-amber-200">
+                  <PawPrint className="w-3 h-3" /> Pet-friendly
+                </span>
+              </div>
+            </div>
+
+            {/* Column 2: Меню та Кухня (3 cols) */}
+            <div className="lg:col-span-3 space-y-3">
+              <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-white">
+                Меню ресторану
+              </h4>
+              <ul className="space-y-2 text-stone-400">
+                <li>
+                  <a href="#cat-pizza" className="hover:text-amber-400 transition flex items-center gap-1.5">
+                    <span>🍕</span>
+                    <span>Піца з дров&apos;яної печі (14 видів)</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#cat-grill" className="hover:text-amber-400 transition flex items-center gap-1.5">
+                    <span>🍢</span>
+                    <span>Мангал-меню (шашлик, люля-кебаб)</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#cat-pasta" className="hover:text-amber-400 transition flex items-center gap-1.5">
+                    <span>🍝</span>
+                    <span>Домашня паста та равіолі</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#cat-appetizers-crimea" className="hover:text-amber-400 transition flex items-center gap-1.5">
+                    <span>🥟</span>
+                    <span>Чебуреки, янтики та мезе</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#cat-soups-crimea" className="hover:text-amber-400 transition flex items-center gap-1.5">
+                    <span>🍲</span>
+                    <span>Кримський лагман і шурпа</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="#cat-cocktails-short" className="hover:text-amber-400 transition flex items-center gap-1.5">
+                    <span>🍸</span>
+                    <span>Крафтовий бар та настоянки</span>
+                  </a>
+                </li>
+                <li className="pt-1">
+                  <a
+                    href="/menu.pdf"
+                    target="_blank"
+                    className="inline-flex items-center gap-1.5 text-amber-400 hover:text-amber-300 font-semibold underline"
+                  >
+                    <FileText className="w-3.5 h-3.5" />
+                    <span>Завантажити повне PDF-меню</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 3: Гостям та Сервіс (2 cols) */}
+            <div className="lg:col-span-2 space-y-3">
+              <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-white">
+                Гостям
+              </h4>
+              <ul className="space-y-2 text-stone-400">
+                <li>
+                  <button
+                    onClick={() => {
+                      setBookingSuccess(false);
+                      setBookingModalOpen(true);
+                    }}
+                    className="text-amber-400 hover:text-amber-300 font-medium transition text-left"
+                  >
+                    Забронювати стіл онлайн →
+                  </button>
+                </li>
+                <li>
+                  <a href="#reviews" className="hover:text-white transition">
+                    Відгуки Google ({settings.google_rating || "4.8"} ★)
+                  </a>
+                </li>
+                <li>
+                  <a href="#concept" className="hover:text-white transition">
+                    Зали «Крим» та «Рим»
+                  </a>
+                </li>
+                <li>
+                  <span className="text-zinc-500 block text-[11px]">
+                    Знижка -20% у будні 11–15
+                  </span>
+                </li>
+                <li>
+                  <span className="text-zinc-500 block text-[11px]">
+                    Знижка -15% на піцу з собою
+                  </span>
+                </li>
+                <li className="pt-1">
+                  <button
+                    onClick={handleCopyWifi}
+                    className="inline-flex items-center gap-1 text-stone-400 hover:text-white transition text-[11px]"
+                  >
+                    <Wifi className="w-3 h-3 text-amber-400" />
+                    <span>Wi-Fi: <strong className="font-mono text-white">{settings.wifi_password || "krymirome"}</strong></span>
+                  </button>
+                </li>
+              </ul>
+            </div>
+
+            {/* Column 4: Контакти та Мережа (3 cols) */}
+            <div className="lg:col-span-3 space-y-3">
+              <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-white">
+                Контакти та локація
+              </h4>
+              <div className="space-y-2 text-stone-400">
+                <div className="flex items-start gap-2">
+                  <MapPin className="w-4 h-4 text-amber-400 shrink-0 mt-0.5" />
+                  <div>
+                    <a
+                      href={googleMapsUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-white hover:text-amber-300 transition font-medium"
+                    >
+                      {settings.address} ↗
+                    </a>
+                    <span className="text-[11px] text-zinc-500 block">
+                      м. Харківська, Київ
+                    </span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <Clock className="w-4 h-4 text-amber-400 shrink-0" />
+                  <span>{settings.hours}</span>
+                </div>
+
+                <div className="flex items-center gap-2">
+                  <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <a
+                    href={`tel:${(settings.phone || "+380931090103").replace(/[^\d+]/g, "")}`}
+                    className="text-white hover:text-amber-300 font-bold"
+                  >
+                    {settings.phone || "+380 (93) 109-01-03"}
+                  </a>
+                </div>
+
+                <div className="pt-2">
+                  <div className="text-[11px] uppercase tracking-wider text-zinc-400 font-bold mb-1.5">
+                    Наші заклади в Instagram:
+                  </div>
+                  <div className="flex flex-wrap gap-1.5">
+                    {[
+                      { handle: settings.instagram_main || "kyrym_i_rym", label: "КРИМ & РИМ" },
+                      { handle: settings.instagram_2 || "amigosbarkyiv", label: "AMIGOS" },
+                      { handle: settings.instagram_3 || "barstoyanka", label: "СТОЯНКА" },
+                    ].map((item) => (
+                      <a
+                        key={item.handle}
+                        href={`https://www.instagram.com/${item.handle.replace("@", "")}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-1 px-2.5 py-1 bg-zinc-900 hover:bg-zinc-800 text-[11px] font-bold text-stone-300 hover:text-white transition border border-zinc-800"
+                      >
+                        <Instagram className="w-3 h-3 text-pink-500" />
+                        <span>{item.label}</span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="flex items-center gap-6">
-            <a
-              href={googleMapsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="hover:text-white transition inline-flex items-center gap-1"
-            >
-              <MapPin className="w-3.5 h-3.5 text-amber-500" />
-              <span>Google Карти</span>
-            </a>
-            <a href="/menu.pdf" target="_blank" className="hover:text-white transition">
-              Оригінальне PDF-меню
-            </a>
-            <Link href="/admin" className="hover:text-white transition">
-              Адмін-панель
-            </Link>
+
+          {/* Bottom Copyright Bar */}
+          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-zinc-500 text-xs">
+            <div className="flex items-center gap-2 text-center sm:text-left">
+              <span>© 2026 Creamy Rim («Крим &amp; Рим»). Всі права захищено.</span>
+            </div>
+
+            <div className="flex items-center gap-4 text-center sm:text-right">
+              <a
+                href={googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-stone-300 transition inline-flex items-center gap-1"
+              >
+                <MapPin className="w-3.5 h-3.5 text-amber-500" />
+                <span>Google Карти</span>
+              </a>
+              <span>•</span>
+              <span className="text-zinc-600">м. Київ, вул. Братства Тарасівців, 3</span>
+            </div>
           </div>
         </div>
       </footer>
